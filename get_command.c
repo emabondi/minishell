@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   get_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/11 19:33:31 by ebondi           ###   ########.fr       */
+/*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
+/*   Updated: 2022/10/11 19:45:01 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void sig_handler(int signal)
+void get_command(t_mini *mini)
 {
-	if (signal == SIGINT)
+	char	*buff;
+	int		p;
+
+	p = mini->exit;
+	buff = readline("minisburo:");
+	if (buff && (!ft_strncmp(buff, "exit", ft_strlen(buff))))
 	{
-		printf("\n");
-		rl_on_new_line();
-		rl_redisplay();
+		ft_putendl_fd("exit", 1);
+		mini->exit = 1;
 	}
-	(void)signal;
-	return ;
-}
 
-void	init(t_mini *mini)
-{
-	mini->exit = 0;
-}
-
-int	main(void)
-{
-	t_mini		mini;
-
-	init(&mini);
-	signal(SIGINT, sig_handler);
-	signal(SIGQUIT, sig_handler);
-	while (mini.exit == 0)
-	{
-		get_command(&mini);
-	}
-	return (0);
 }
