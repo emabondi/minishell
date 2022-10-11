@@ -6,7 +6,7 @@
 #    By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 18:07:38 by ebondi            #+#    #+#              #
-#    Updated: 2022/10/10 18:56:32 by ebondi           ###   ########.fr        #
+#    Updated: 2022/10/11 11:30:06 by ebondi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,14 +14,15 @@ READLINE_FLAGS = -L/usr/include -lreadline -L$$HOME/.brew/opt/readline/lib -I $$
 NAME = minishell
 FLAGS = -Wall -Werror -Wextra
 OBJS = minishell.c
+LIBFT = libft/libft.a
 
 $(NAME):$(OBJS)
-		@gcc $(FLAGS) $(OBJS) -o $(NAME)
+		@gcc $(FLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(READLINE_FLAGS)
 		@printf "\033[1;35mMinishell compiled!!\n"
 
 all: $(NAME)
 
-bonus:
+bonus: $(NAME)
 
 clean:
 
