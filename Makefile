@@ -6,7 +6,7 @@
 #    By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 18:07:38 by ebondi            #+#    #+#              #
-#    Updated: 2022/10/13 17:56:12 by ebondi           ###   ########.fr        #
+#    Updated: 2022/10/13 20:58:35 by ebondi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 READLINE_FLAGS = -L/usr/include -lreadline -lcurses -L /Users/$(USER)/.brew/opt/readline/lib -I /Users/$(USER)/.brew/opt/readline/include
 NAME = minishell
 FLAGS = -Wall -Werror -Wextra
-OBJS = minishell.c get_command.c
+OBJS = minishell.c get_command.c expand_env.c
 LIBFT = libft/libft.a
 
 $(NAME):$(OBJS)
