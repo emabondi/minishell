@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/13 14:54:45 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/13 19:52:21 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	init_signals(int startorend)
 		tcsetattr(STDIN_FILENO, TCSANOW, &tty_attrs_old);
 }
 
-void	init(t_mini *mini, char **envp)
+void	init(t_mini *mini, char **env)
 {
 	mini->exit = 0;
-	mini->env = envp;
+	mini->env = ft_env_copy(env);
 	init_signals(0);
 }
 
@@ -79,5 +79,6 @@ int	main(int argc, char *argv[], char **env)
 		get_command(&mini);
 	}
 	init_signals(1);
+	//printf("%s", ft_get_env_var(&mini, "$ciao"));
 	return (exit_status);
 }

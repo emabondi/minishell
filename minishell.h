@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/13 13:43:02 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/13 19:33:45 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	init(t_mini *mini, char **envp);
 void	sig_handler(int signal);
 void 	get_command(t_mini *mini);
 char	**ft_env_copy(char **env);
+char	*ft_get_env_var(t_mini *mini, char *str);
 
 #endif
