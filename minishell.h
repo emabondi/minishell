@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/12 17:24:42 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/13 13:43:02 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 typedef struct s_minishell
 {
 	int	exit;
+	char **env;
 }		t_mini;
 
 int	exit_status;
 
-void	init(t_mini *mini);
+void	init(t_mini *mini, char **envp);
 void	sig_handler(int signal);
 void 	get_command(t_mini *mini);
 

@@ -6,7 +6,7 @@
 #    By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 18:07:38 by ebondi            #+#    #+#              #
-#    Updated: 2022/10/12 21:05:16 by ebondi           ###   ########.fr        #
+#    Updated: 2022/10/13 13:32:03 by ebondi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,10 @@ fclean:
 	@rm -f minishell
 	@printf "\033[1;91mRemoving objects...\n"
 
+re: fclean all
+
 vai: re
 	@./$(NAME)
 
-re: fclean all
-	
+leaks:
+	@leaks --atExit -- ./$(NAME)
