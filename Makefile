@@ -6,7 +6,7 @@
 #    By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 18:07:38 by ebondi            #+#    #+#              #
-#    Updated: 2022/10/13 13:32:03 by ebondi           ###   ########.fr        #
+#    Updated: 2022/10/13 17:56:12 by ebondi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ OBJS = minishell.c get_command.c
 LIBFT = libft/libft.a
 
 $(NAME):$(OBJS)
+		@make -C libft
 		@gcc $(FLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(READLINE_FLAGS)
 		@printf "\033[1;35mMinishell compiled!!\e[0m\n"
 
@@ -26,15 +27,21 @@ all: $(NAME)
 bonus: $(NAME)
 
 clean:
+	@make clean -C libft
 
 fclean:
 	@rm -f minishell
+	@make fclean -C libft
 	@printf "\033[1;91mRemoving objects...\n"
 
 re: fclean all
-
+	@make fclean -C libft
+	@make -C libft
+	
 vai: re
 	@./$(NAME)
 
 leaks:
 	@leaks --atExit -- ./$(NAME)
+
+.PHONY:	all clean fclean re bonus
