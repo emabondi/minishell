@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <stdlib.h>
 # include <termios.h>
 
 typedef struct s_minishell
@@ -31,5 +32,6 @@ int	exit_status;
 void	init(t_mini *mini, char **envp);
 void	sig_handler(int signal);
 void 	get_command(t_mini *mini);
+char	**ft_env_copy(char **env);
 
 #endif

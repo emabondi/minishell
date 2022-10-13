@@ -54,13 +54,26 @@ void	init(t_mini *mini, char **envp)
 	init_signals(0);
 }
 
-int	main(int argc, char *argv[], char **envp)
+void	ft_free_matrix(char **env)
+{
+	int	i;
+
+	i = 0;
+	while (env[i])
+	{
+		free(env[i]);
+		i++;
+	}
+	free(env);
+}
+
+int	main(int argc, char *argv[], char **env)
 {
 	t_mini		mini;
 
 	(void)argc;
 	(void)argv;
-	init(&mini, envp);
+	init(&mini, env);
 	while (mini.exit == 0)
 	{
 		get_command(&mini);
