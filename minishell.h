@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/14 16:32:55 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/14 16:48:17 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int		ft_len_matrix(char **matrix);
 void	prova(char *str);
 char	*expand_env_var(char *str);
 int		ft_isspace(char c);
+void	ft_check_parser(char *str);
 
 #endif
