@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/13 19:52:21 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/14 16:02:02 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_signals(int startorend)
 void	init(t_mini *mini, char **env)
 {
 	mini->exit = 0;
-	mini->env = ft_env_copy(env);
+	mini->env = env;
 	init_signals(0);
 }
 

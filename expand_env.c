@@ -6,11 +6,18 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/13 21:09:13 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/14 16:41:07 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	ft_isspace(char c)
+{
+	if (c == " " || c == "\t" || c == "\n" || c == "\v" || c == "\f" || c == "\r")
+		return (1);
+	return (0);
+}
 
 char	*ft_get_env_var(t_mini *mini, char *str)
 {
@@ -29,6 +36,15 @@ char	*ft_get_env_var(t_mini *mini, char *str)
 
 char	*expand_env_var(char *str)
 {
+	int i;
+	int	j;
 
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == "$")
+			while(!ft_isspace(str[i]))
+	}
 	return str;
 }
