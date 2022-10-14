@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/13 21:12:46 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/14 15:35:18 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	get_command(t_mini *mini)
 	i = 0;
 	p = mini->exit;
 	buff = readline("minisburo:");
+	ft_check_parser(buff);
 	if (buff != NULL && ft_strlen(buff) > 0)
 	{
 		add_history(buff);

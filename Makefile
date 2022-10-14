@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+         #
+#    By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 18:07:38 by ebondi            #+#    #+#              #
-#    Updated: 2022/10/13 20:58:35 by ebondi           ###   ########.fr        #
+#    Updated: 2022/10/14 15:35:09 by atarsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 READLINE_FLAGS = -L/usr/include -lreadline -lcurses -L /Users/$(USER)/.brew/opt/readline/lib -I /Users/$(USER)/.brew/opt/readline/include
 NAME = minishell
 FLAGS = -Wall -Werror -Wextra
-OBJS = minishell.c get_command.c expand_env.c
+OBJS = minishell.c get_command.c expand_env.c ft_check_pars.c
 LIBFT = libft/libft.a
 
 $(NAME):$(OBJS)

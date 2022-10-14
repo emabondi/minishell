@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/13 21:08:51 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/14 15:33:43 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ char	*ft_get_env_var(t_mini *mini, char *str);
 int		ft_len_matrix(char **matrix);
 void	prova(char *str);
 char	*expand_env_var(char *str);
+void	ft_check_parser(char *str);
 
 #endif
