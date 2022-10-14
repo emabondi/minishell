@@ -6,7 +6,7 @@
 /*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/14 18:16:51 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/14 18:19:31 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ char	*ft_get_env_var(t_mini *mini, char *str)
 	return (NULL);
 }
 
-char	*expand_env_var(char *str)
-{
-	int i;
-	int	j;
+//char	*expand_env_var(char *str)
+//{
+	//int i;
+	//int	j;
 
-	i = 0;
-	j = 1;
-	while (str[i])
-	{
-		if (str[i] == "$")
-		{
-			while (!ft_isspace(str[++i]))
-				j++;
-			ft_strlcpy();
-		}
-		
-	}
-	return (str);
-}
+	//i = 0;
+	//j = 1;
+	//while (str[i])
+	//{
+		//if (str[i] == "$")
+		//{
+			//while (!ft_isspace(str[++i]))
+			//	j++;
+			//ft_strlcpy();
+		//}
+	//	
+	//}
+	//return (str);
+//}
