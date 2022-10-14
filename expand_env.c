@@ -6,15 +6,16 @@
 /*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/14 16:51:09 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/14 18:16:51 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_isspace(char c)
+int	ft_isspace(int c)
 {
-	if (c == " " || c == "\t" || c == "\n" || c == "\v" || c == "\f" || c == "\r")
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'\
+		|| c == '\f' || c == '\r')
 		return (1);
 	return (0);
 }
@@ -40,11 +41,16 @@ char	*expand_env_var(char *str)
 	int	j;
 
 	i = 0;
-	j = 0;
+	j = 1;
 	while (str[i])
 	{
 		if (str[i] == "$")
-			while(!ft_isspace(str[i]))
+		{
+			while (!ft_isspace(str[++i]))
+				j++;
+			ft_strlcpy();
+		}
+		
 	}
-	return str;
+	return (str);
 }
