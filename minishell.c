@@ -78,6 +78,8 @@ int	main(int argc, char *argv[], char **env)
 	{
 		get_command(&mini);
 	}
+
+	ft_free_matrix(mini.env);
 	init_signals(1);
 	return (exit_status);
 }

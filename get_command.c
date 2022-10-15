@@ -72,5 +72,16 @@ void	get_command(t_mini *mini)
 			printf("\n");
 		}
 	}
+	if (!ft_strncmp(buff, "export", 6) && ft_strlen(buff) == 6)
+	{
+		mini->export = ft_export(mini);
+		while (mini->env[i])
+		{
+			printf("declare -x %s", mini->export[i]);
+			i++;
+			printf("\n");
+		}
+	}
+	ft_free_matrix(mini->export);
 	free(buff);
 }

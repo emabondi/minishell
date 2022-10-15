@@ -1,2 +1,11 @@
 --da testare il caso di variabile vuota per ft_get_env_var
 	(post export)
+
+export argomento=""
+export argomento=valore
+export argomento
+unset
+shelvl
+$? cambiare exit status
+
+LEAKS FREE EXPORT

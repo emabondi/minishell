@@ -25,6 +25,7 @@ typedef struct s_minishell
 {
 	int		exit;
 	char	**env;
+	char	**export;
 }		t_mini;
 
 int	exit_status;
@@ -40,5 +41,8 @@ char	*expand_env_var(t_mini *mini, char *str);
 int		ft_isspace(int c);
 void	ft_check_parser(char *str);
 char	*expand_env_var2(t_mini *mini, char *str, int i);
+char    **ft_export(t_mini *mini);
+void	ft_swap(t_mini *mini, long long o, long long i);
+void	ft_free_matrix(char **env);
 
 #endif
