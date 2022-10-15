@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/14 20:05:40 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/15 19:40:43 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isspace(int c)
 {
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'\
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'
 		|| c == '\f' || c == '\r')
 		return (1);
 	return (0);
@@ -25,6 +25,8 @@ char	*ft_get_env_var(t_mini *mini, char *str)
 	int	i;
 
 	i = 0;
+	if (ft_strlen(str) == 1)
+		return (NULL);
 	str++;
 	while (mini->env[i])
 	{
@@ -35,15 +37,15 @@ char	*ft_get_env_var(t_mini *mini, char *str)
 	return (NULL);
 }
 
-void	expand_env_var2(t_mini *mini, char *str, int i)
+char	*expand_env_var2(t_mini *mini, char *str, int i)
 {
 	int		j;
 	char	*var;
 	char	*expanded_var;
-	char 	*new;
+	char	*new;
 
-	j = 0;
-	while (!ft_isspace(str[i + j]) && str[i + j] /*&& !ft_iscommand(str[i])*/)
+	j = 1;
+	while (str[i + j] && !ft_isspace(str[i + j]) && ft_isalnum(str[i + j]))
 		j++;
 	var = ft_substr(str + i, 0, j);
 	expanded_var = ft_get_env_var(mini, var);
@@ -54,14 +56,13 @@ void	expand_env_var2(t_mini *mini, char *str, int i)
 		new = ft_strjoin(var, expanded_var);
 		free(var);
 		var = ft_strjoin(new, str +(i + j));
-		printf("%s\n", var);
 		free(new);
-		//free(str);
-		str = var;
+		free(str);
+		return (var);
 	}
 	else
 		free(var);
-	return ;
+	return (str);
 }
 
 char	*expand_env_var(t_mini *mini, char *str)
@@ -72,7 +73,10 @@ char	*expand_env_var(t_mini *mini, char *str)
 	while (str[i])
 	{
 		if (str[i] == '$')
-			expand_env_var2(mini, str, i);
+			str = expand_env_var2(mini, str, i);
+		else if (str[i++] == 39)
+			while (str[i] && str[i] != 39)
+				i++;
 		i++;
 	}
 	return (str);

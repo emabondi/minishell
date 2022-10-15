@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/14 19:46:04 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/15 19:08:12 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	prova(char *str);
 char	*expand_env_var(t_mini *mini, char *str);
 int		ft_isspace(int c);
 void	ft_check_parser(char *str);
-void	expand_env_var2(t_mini *mini, char *str, int i);
+char	*expand_env_var2(t_mini *mini, char *str, int i);
 
 #endif

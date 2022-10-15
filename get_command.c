@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/14 19:58:04 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/15 19:46:03 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,18 @@ void	get_command(t_mini *mini)
 	i = 0;
 	p = mini->exit;
 	buff = readline("minisburo:");
-	ft_check_parser(buff);
 	if (buff != NULL && ft_strlen(buff) > 0)
 	{
+		ft_check_parser(buff);
 		add_history(buff);
 		buff = expand_env_var(mini, buff);
-		//printf("%s\n", buff);
+		printf("%s\n", buff);
 	}
 	if (buff == NULL || (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4)))
 	{
 		ft_putendl_fd("exit", 1);
 		mini->exit = 1;
+		free(buff);
 		return ;
 	}
 	if (!ft_strncmp(buff, "env", 3) && ft_strlen(buff) == 3)

@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/14 16:02:02 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/15 20:13:06 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,5 @@ int	main(int argc, char *argv[], char **env)
 		get_command(&mini);
 	}
 	init_signals(1);
-	//printf("%s", ft_get_env_var(&mini, "$ciao"));
 	return (exit_status);
 }
