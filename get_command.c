@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/15 19:46:03 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/15 21:11:57 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	get_command(t_mini *mini)
 			i++;
 			printf("\n");
 		}
+		ft_free_matrix(mini->export);
 	}
-	ft_free_matrix(mini->export);
 	free(buff);
 }

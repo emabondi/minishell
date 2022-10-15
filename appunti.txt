@@ -7,5 +7,6 @@ export argomento
 unset
 shelvl
 $? cambiare exit status
+check expand con "$HOME"
 
 LEAKS FREE EXPORT

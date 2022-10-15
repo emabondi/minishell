@@ -19,7 +19,7 @@ void	ft_swap(t_mini *mini, long long o, long long i)
 	}
 }
 
-char    **ft_export(t_mini *mini)
+char	**ft_export(t_mini *mini)
 {
 	int		i;
 	int		o;
@@ -37,10 +37,10 @@ char    **ft_export(t_mini *mini)
 	}
 	mini->export[i] = NULL;
 	i = 0;
-		while (i<o)
-		{
-			ft_swap(mini, o, i);
-			i++;
-		}
+	while (i < o)
+	{
+		ft_swap(mini, o, i);
+		i++;
+	}
 	return (mini->export);
 }

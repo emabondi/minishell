@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/15 19:40:43 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/15 21:14:33 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*expand_env_var2(t_mini *mini, char *str, int i)
 	while (str[i + j] && !ft_isspace(str[i + j]) && ft_isalnum(str[i + j]))
 		j++;
 	var = ft_substr(str + i, 0, j);
+	printf("%s\n", var);
 	expanded_var = ft_get_env_var(mini, var);
 	if (expanded_var != NULL)
 	{
