@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/15 19:08:12 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/16 18:06:39 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ char	*ft_get_env_var(t_mini *mini, char *str);
 int		ft_len_matrix(char **matrix);
 void	prova(char *str);
 char	*expand_env_var(t_mini *mini, char *str);
+char	*expand_env_var2(t_mini *mini, char *str, int i);
+char	*expand_env_var3(char *initial_str, char *var);
 int		ft_isspace(int c);
 void	ft_check_parser(char *str);
-char	*expand_env_var2(t_mini *mini, char *str, int i);
 char    **ft_export(t_mini *mini);
 void	ft_swap(t_mini *mini, long long o, long long i);
 void	ft_free_matrix(char **env);
