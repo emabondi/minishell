@@ -6,18 +6,26 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/16 21:08:05 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/17 21:09:06 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_isspace(int c)
+int	confront_env_var(char *env_line, char *str)
 {
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r')
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (env_line[i] && env_line[i] != '=')
+	{
+		if (env_line[i] - str[i] != 0)
+			return (0);
+		i++;
+	}
+	if (i != (int)ft_strlen(str))
+		return (0);
+	return (1);
 }
 
 char	*ft_get_env_var(t_mini *mini, char *str)
@@ -34,11 +42,8 @@ char	*ft_get_env_var(t_mini *mini, char *str)
 		return (NULL);
 	while (mini->env[i])
 	{
-		if (!ft_strncmp(mini->env[i], str, len_str))
-		{
-			//printf("env:%s, str:%s len_str:%d\n", mini->env[i], str, len_str);
+		if (confront_env_var(mini->env[i], str))
 			return (ft_strchr(mini->env[i], '=') + 1);
-		}
 		i++;
 	}
 	return (NULL);
