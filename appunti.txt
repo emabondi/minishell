@@ -7,7 +7,7 @@ export argomento
 unset
 shelvl
 $? cambiare exit status
-check expand con "$HOME"
-fix get_env_var con "$HOM" o similari
+check expand con "$HOME" //FATTO
+fix get_env_var con "$HOM" o similari //FATTO
 
 LEAKS FREE EXPORT
