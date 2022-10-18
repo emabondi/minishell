@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/15 21:11:57 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/18 19:48:18 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	get_command(t_mini *mini)
 	if (buff != NULL && ft_strlen(buff) > 0)
 	{
 		ft_check_parser(buff);
+		ft_check_s_quotes(buff);
+		ft_check_d_quotes(buff);
 		add_history(buff);
 		buff = expand_env_var(mini, buff);
 		printf("%s\n", buff);

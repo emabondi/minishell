@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/17 20:18:05 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/18 19:48:00 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,14 @@ char	*expand_env_var2(t_mini *mini, char *str, int i);
 char	*expand_env_var3(char *initial_str, char *var);
 int		ft_isspace(int c);
 int		confront_env_var(char *env_line, char *str);
-void	ft_check_parser(char *str);
 char	**ft_export(t_mini *mini);
 void	ft_swap(t_mini *mini, long long o, long long i);
 void	ft_free_matrix(char **env);
+
+//syntax check
+
+void	ft_check_s_quotes(char *str);
+void	ft_check_d_quotes(char *str);
+void	ft_check_parser(char *str);
 
 #endif
