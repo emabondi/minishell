@@ -6,7 +6,7 @@
 #    By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/12 10:57:34 by ebondi            #+#    #+#              #
-#    Updated: 2022/10/13 17:50:55 by ebondi           ###   ########.fr        #
+#    Updated: 2022/10/18 11:10:08 by ebondi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,11 +62,11 @@ BONUS_OBJS	= $(BONUS:.c=.o)
 
 HDRS =  libft.h
 FLAGS = -Wall -Wextra -Werror
-$(NAME):
+@$(NAME):
 	@gcc -c -I $(HDRS) $(SRCS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-bonus:
+@bonus:
 	@gcc -c -I $(HDRS) $(BONUS)
 	@ar rc $(NAME) $(BONUS_OBJS)
 	@ranlib $(NAME)

@@ -11,3 +11,4 @@ check expand con "$HOME" //FATTO
 fix get_env_var con "$HOM" o similari //FATTO
 
 LEAKS FREE EXPORT
+alla fine pulire il makefile

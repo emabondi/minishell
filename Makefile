@@ -6,7 +6,7 @@
 #    By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 18:07:38 by ebondi            #+#    #+#              #
-#    Updated: 2022/10/17 20:19:00 by ebondi           ###   ########.fr        #
+#    Updated: 2022/10/18 14:41:59 by ebondi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ clean:
 	@make clean -C libft
 
 fclean:
-	@rm -f minishell
+	@rm -f minishell tests
 	@make fclean -C libft
 	@printf "\033[1;91mRemoving objects...\n"
 
@@ -44,4 +44,8 @@ vai: re
 leaks:
 	@leaks --atExit -- ./$(NAME)
 
-.PHONY:	all clean fclean re bonus
+test: test.c re
+	@gcc test.c libft/libft.a -o tests
+	@./tests | ./minishell
+
+.PHONY:	all clean fclean re bonus vai leaks test
