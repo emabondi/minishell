@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	ft_swap(t_mini *mini, long long o, long long i)
+void	ft_swap(t_mini *mini, int o, int i)
 {
 	char			*temp;
 	int		j;

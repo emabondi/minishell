@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/18 19:48:18 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/19 18:27:13 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,21 @@ void	get_command(t_mini *mini)
 	int		p;
 	int		i;
 
-	i = 0;
+	i = -1;
 	p = mini->exit;
 	buff = readline("minisburo:");
 	if (buff != NULL && ft_strlen(buff) > 0)
 	{
-		ft_check_parser(buff);
-		ft_check_s_quotes(buff);
-		ft_check_d_quotes(buff);
+		ft_check_pipe(buff);
+		//ft_check_s_quotes(buff);
+		ft_check_quotes(buff);
 		add_history(buff);
 		buff = expand_env_var(mini, buff);
-		printf("%s\n", buff);
+		mini->commands = ft_smart_split(buff, '|');
+		while (mini->commands[++i] != NULL)
+			printf("%s\n", mini->commands[i]);
 	}
+	i = 0;
 	if (buff == NULL || (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4)))
 	{
 		ft_putendl_fd("exit", 1);
