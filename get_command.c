@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/19 18:27:13 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/20 20:47:43 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,27 @@ char	**ft_env_copy(char **env)
 	return (env_copy);
 }
 
+int	execute_commands(t_mini *mini)
+{
+	int	i;
+
+	i = 0;
+	while (mini->cmds[i])
+	{
+		if (mini->cmds[i][0] != '\0' && \
+			(!ft_strncmp(mini->cmds[i], "exit", 4) && \
+				ft_strlen(mini->cmds[i]) == 4))
+			builtin_exit(mini);
+		if (!ft_strncmp(mini->cmds[i], "env", 3) &&\
+			ft_strlen(mini->cmds[i]) == 3)
+			builtin_env(mini);
+		if (!ft_strncmp(mini->cmds[i], "export", 6) && ft_strlen(mini->cmds[i]) == 6)
+			builtin_export(mini);
+		i++;
+	}
+	return (1);
+}
+
 void	get_command(t_mini *mini)
 {
 	char	*buff;
@@ -51,42 +72,22 @@ void	get_command(t_mini *mini)
 	buff = readline("minisburo:");
 	if (buff != NULL && ft_strlen(buff) > 0)
 	{
-		ft_check_pipe(buff);
-		//ft_check_s_quotes(buff);
-		ft_check_quotes(buff);
+		if (!ft_check_pipe(buff, mini) || !ft_check_quotes(buff, mini))
+			return ;
 		add_history(buff);
 		buff = expand_env_var(mini, buff);
-		mini->commands = ft_smart_split(buff, '|');
-		while (mini->commands[++i] != NULL)
-			printf("%s\n", mini->commands[i]);
+		mini->cmds = ft_smart_split(buff, '|');
+		if(!execute_commands(mini))
+			return ;
+		while (mini->cmds[++i] != NULL)
+			printf("%s\n", mini->cmds[i]);
 	}
-	i = 0;
-	if (buff == NULL || (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4)))
+	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
 	{
 		ft_putendl_fd("exit", 1);
 		mini->exit = 1;
 		free(buff);
 		return ;
-	}
-	if (!ft_strncmp(buff, "env", 3) && ft_strlen(buff) == 3)
-	{
-		while (mini->env[i])
-		{
-			printf("%s", mini->env[i]);
-			i++;
-			printf("\n");
-		}
-	}
-	if (!ft_strncmp(buff, "export", 6) && ft_strlen(buff) == 6)
-	{
-		mini->export = ft_export(mini);
-		while (mini->env[i])
-		{
-			printf("declare -x %s", mini->export[i]);
-			i++;
-			printf("\n");
-		}
-		ft_free_matrix(mini->export);
 	}
 	free(buff);
 }

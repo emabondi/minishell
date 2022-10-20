@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/15 20:57:07 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/20 20:16:23 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	main(int argc, char *argv[], char **env)
 	{
 		get_command(&mini);
 	}
-	//ft_free_matrix(mini.env);
 	init_signals(1);
 	return (exit_status);
 }

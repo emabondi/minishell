@@ -6,11 +6,12 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:05:21 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/17 20:06:07 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/20 19:23:35 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 
 int	ft_isspace(int c)
 {

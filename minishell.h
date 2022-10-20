@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/19 18:15:58 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/20 20:46:56 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_minishell
 	int		exit;
 	char	**env;
 	char	**export;
-	char	**commands;
+	char	**cmds;
 }		t_mini;
 
 int	exit_status;
@@ -49,9 +49,12 @@ void	ft_free_matrix(char **env);
 //syntax check
 
 //void	ft_check_s_quotes(char *str);
-void	ft_check_quotes(char *str);
-void	ft_check_pipe(char *str);
+int		ft_check_quotes(char *str, t_mini *mini);
+int		ft_check_pipe(char *str, t_mini *mini);
 
 char	**ft_smart_split(char *s, char c);
+void	builtin_exit(t_mini *mini);
+void	builtin_env(t_mini *mini);
+void	builtin_export(t_mini *mini);
 
 #endif
