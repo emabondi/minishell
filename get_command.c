@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/20 20:47:43 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/26 16:56:45 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,11 @@ void	get_command(t_mini *mini)
 		add_history(buff);
 		buff = expand_env_var(mini, buff);
 		mini->cmds = ft_smart_split(buff, '|');
-		if(!execute_commands(mini))
+		if (!execute_commands(mini))
 			return ;
 		while (mini->cmds[++i] != NULL)
 			printf("%s\n", mini->cmds[i]);
+		ft_free_matrix(mini->cmds);
 	}
 	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
 	{
