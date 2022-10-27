@@ -6,7 +6,7 @@
 /*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/27 11:37:39 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/27 11:51:05 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	get_command(t_mini *mini)
 			return ;
 		while (mini->cmds[++i] != NULL)
 			printf("%s\n", mini->cmds[i]);
+		ft_free_matrix(mini->cmds);
 	}
 	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
 	{
