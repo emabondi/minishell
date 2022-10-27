@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:30:10 by atarsi            #+#    #+#             */
-/*   Updated: 2022/10/20 20:19:46 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/27 08:32:04 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	ft_check_quotes(char *str, t_mini *mini)
 	i = 0;
 	dq = 0;
 	q = 0;
-
 	while (str[i] != '\0')
 	{
 		if (str[i] == '\'' && dq % 2 == 0)

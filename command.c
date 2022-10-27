@@ -1,62 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_command.c                                      :+:      :+:    :+:   */
+/*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/20 20:47:43 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/27 11:37:39 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_len_matrix(char **matrix)
-{
-	int i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
-char	**ft_env_copy(char **env)
-{
-	char	**env_copy;
-	int		i;
-
-	i = 0;
-	env_copy = (char **)malloc(sizeof(char *) * ft_len_matrix(env) + 1);
-	while (env[i])
-	{
-		env_copy[i] = ft_strdup(env[i]);
-		i++;
-	}
-	env_copy[i] = NULL;
-	return (env_copy);
-}
-
 int	execute_commands(t_mini *mini)
 {
-	int	i;
+	int		i;
+	char	**cmd;
 
 	i = 0;
 	while (mini->cmds[i])
 	{
-		if (mini->cmds[i][0] != '\0' && \
-			(!ft_strncmp(mini->cmds[i], "exit", 4) && \
-				ft_strlen(mini->cmds[i]) == 4))
+		cmd = ft_smart_split(mini->cmds[i], ' ');
+		if (cmd[i] != '\0' && ft_strncmp(cmd[i], "exit", 4) == 0 && \
+			ft_strlen (cmd[i]) == 4)
 			builtin_exit(mini);
-		if (!ft_strncmp(mini->cmds[i], "env", 3) &&\
-			ft_strlen(mini->cmds[i]) == 3)
+		else if (ft_strncmp(cmd[i], "env", 3) == 0 && \
+			ft_strlen(cmd[i]) == 3)
 			builtin_env(mini);
-		if (!ft_strncmp(mini->cmds[i], "export", 6) && ft_strlen(mini->cmds[i]) == 6)
+		else if (ft_strncmp(cmd[i], "export", 6) == 0 && \
+			ft_strlen(cmd[i]) == 6)
 			builtin_export(mini);
-		i++;
+		//else if (ft_strncmp(cmd[i], "echo", 4) == 0 && \
+		//	ft_strlen(cmd[i]) == 4)
+		//	builtin_echo(mini);
+		//else if (ft_strncmp(cmd[i], "cd", 2) == 0 && \
+		//	ft_strlen(cmd[i]) == 2)
+		//	builtin_cd(mini);
+		//else if (ft_strncmp(cmd[i], "pwd", 3) == 0 && \
+		//	ft_strlen(cmd[i]) == 3)
+		//	builtin_cd(mini);
+		//else if (ft_strncmp(cmd[i], "unset", 5) == 0 && \
+		//	ft_strlen(cmd[i]) == 5)
+		//	builtin_unset(mini);
+		//else
+			exit_status = ft_ext_cmd(cmd, mini);
+			i++;
 	}
 	return (1);
 }
@@ -77,7 +65,7 @@ void	get_command(t_mini *mini)
 		add_history(buff);
 		buff = expand_env_var(mini, buff);
 		mini->cmds = ft_smart_split(buff, '|');
-		if(!execute_commands(mini))
+		if (!execute_commands(mini))
 			return ;
 		while (mini->cmds[++i] != NULL)
 			printf("%s\n", mini->cmds[i]);

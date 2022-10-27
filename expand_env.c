@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/19 18:21:17 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/26 17:14:28 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char	*expand_env_var2(t_mini *mini, char *str, int i)
 
 char	*expand_env_var(t_mini *mini, char *str)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (str[i])
