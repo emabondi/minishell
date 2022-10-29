@@ -6,7 +6,7 @@
 /*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/27 11:51:05 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/29 18:10:14 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	execute_commands(t_mini *mini)
 	while (mini->cmds[i])
 	{
 		cmd = ft_smart_split(mini->cmds[i], ' ');
-		if (cmd[i] != '\0' && ft_strncmp(cmd[i], "exit", 4) == 0 && \
+		if (cmd[i][0] != '\0' && ft_strncmp(cmd[i], "exit", 4) == 0 && \
 			ft_strlen (cmd[i]) == 4)
 			builtin_exit(mini);
 		else if (ft_strncmp(cmd[i], "env", 3) == 0 && \
@@ -42,8 +42,8 @@ int	execute_commands(t_mini *mini)
 		//else if (ft_strncmp(cmd[i], "unset", 5) == 0 && \
 		//	ft_strlen(cmd[i]) == 5)
 		//	builtin_unset(mini);
-		//else
-			exit_status = ft_ext_cmd(cmd, mini);
+		else
+			//exit_status = ft_ext_cmd(cmd, mini);
 			i++;
 	}
 	return (1);
@@ -73,7 +73,7 @@ void	get_command(t_mini *mini)
 	}
 	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
 	{
-		ft_putendl_fd("exit", 1);
+		// ft_putend_fd("exit", 1);
 		mini->exit = 1;
 		free(buff);
 		return ;

@@ -6,7 +6,7 @@
 /*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:49:40 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/27 08:33:14 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/29 17:21:21 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,6 @@ static int	ft_rowcount(char *str, char c)
 		while (str[i] != c && str[i] != '\0')
 		{
 			ft_rowcount2(str, &i);
-			//if (str[i] == '\"')
-			//{
-			//	i += 1;
-			//	while (str[i] != '\"' && str[i])
-			//		i++;
-			//}
-			//if (str[i] == '\'')
-			//{
-			//	i += 1;
-			//	while (str[i] != '\'' && str[i])
-			//		i++;
-			//}
 			i++;
 		}
 	}
@@ -97,24 +85,6 @@ static int	ft_rowlen(char *str, char c)
 		len++;
 	}
 	ft_rowlen2(str, &i, c);
-	//while (str[i])
-	//{
-	//	if (str[i] == '\"')
-	//	{
-	//		i += 1;
-	//		while (str[i] != '\"' && str[i])
-	//			i++;
-	//	}
-	//	if (str[i] == '\'')
-	//	{
-	//		i += 1;
-	//		while (str[i] != '\'' && str[i])
-	//			i++;
-	//	}
-	//	if (str[i] == c)
-	//		break ;
-	//	i++;
-	//}
 	return (i - len);
 }
 
