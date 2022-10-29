@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/29 18:09:18 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/29 18:23:21 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	get_command(t_mini *mini)
 	}
 	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
 	{
-		ft_putendl_fd("exit", 1);
+		// ft_putend_fd("exit", 1);
 		mini->exit = 1;
 		free(buff);
 		return ;

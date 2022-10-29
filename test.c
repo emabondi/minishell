@@ -1,6 +1,6 @@
 #include "libft/libft.h"
 
-int main(void)
+int	main(void)
 {
 	ft_putendl_fd("env", 1);
 	sleep (1);

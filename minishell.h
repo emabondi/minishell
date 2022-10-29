@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/27 11:58:55 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/29 18:20:19 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	exit_status;
 
 void	init(t_mini *mini, char **envp);
 void	sig_handler(int signal);
-void	get_command(t_mini *mini);
+
 char	**ft_env_copy(char **env);
 char	*ft_get_env_var(t_mini *mini, char *str);
 int		ft_len_matrix(char **matrix);
@@ -46,9 +46,10 @@ char	**ft_export(t_mini *mini);
 void	ft_swap(t_mini *mini, int o, int i);
 void	ft_free_matrix(char **env);
 
-//syntax check
+//command
+void	get_command(t_mini *mini);
 
-//void	ft_check_s_quotes(char *str);
+//syntax check
 int		ft_check_quotes(char *str, t_mini *mini);
 int		ft_check_pipe(char *str, t_mini *mini);
 
@@ -57,6 +58,6 @@ void	builtin_exit(t_mini *mini);
 void	builtin_env(t_mini *mini);
 void	builtin_export(t_mini *mini);
 
-int		ft_ext_cmd(char **cmd, t_mini mini);
+int		ft_ext_cmd(char **cmd, t_mini *mini);
 
 #endif
