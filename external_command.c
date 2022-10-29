@@ -6,13 +6,13 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/10/27 12:02:52 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/29 17:23:16 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_ext_cmd(char **cmd, t_mini mini)
-{
+//int	ft_ext_cmd(char **cmd, t_mini mini)
+//{
 	
-}
+//}

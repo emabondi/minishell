@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/27 11:51:05 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/29 18:09:18 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	execute_commands(t_mini *mini)
 	while (mini->cmds[i])
 	{
 		cmd = ft_smart_split(mini->cmds[i], ' ');
-		if (cmd[i] != '\0' && ft_strncmp(cmd[i], "exit", 4) == 0 && \
+		if (cmd[i][0] != '\0' && ft_strncmp(cmd[i], "exit", 4) == 0 && \
 			ft_strlen (cmd[i]) == 4)
 			builtin_exit(mini);
 		else if (ft_strncmp(cmd[i], "env", 3) == 0 && \
@@ -43,7 +43,7 @@ int	execute_commands(t_mini *mini)
 		//	ft_strlen(cmd[i]) == 5)
 		//	builtin_unset(mini);
 		//else
-			exit_status = ft_ext_cmd(cmd, mini);
+			//exit_status = ft_ext_cmd(cmd, mini);
 			i++;
 	}
 	return (1);
