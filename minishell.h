@@ -6,7 +6,7 @@
 /*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/29 15:45:26 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/29 18:20:19 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ char	**ft_smart_split(char *s, char c);
 void	builtin_exit(t_mini *mini);
 void	builtin_env(t_mini *mini);
 void	builtin_export(t_mini *mini);
+
+int		ft_ext_cmd(char **cmd, t_mini *mini);
 
 #endif

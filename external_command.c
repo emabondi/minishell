@@ -6,7 +6,7 @@
 /*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/10/29 16:46:26 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/29 18:17:26 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_find_path(t_mini *mini, char **cmd)
 		
 	// 	if (access())	
 	// }
+	return (0);
 }
 
 int	ft_ext_cmd(char **cmd, t_mini *mini)
