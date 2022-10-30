@@ -10,7 +10,7 @@ $? cambiare exit status
 check expand con "$HOME" //FATTO
 fix get_env_var con "$HOM" o similari //FATTO
 
- questo comando fa segfault: VEFRVE | FGEE|V ER |VFE G|R GR| D| . |DD| GD| DG| G| | DF| R| GR
+questo comando fa segfault: "| |"
 
 LEAKS FREE EXPORT
 alla fine pulire il makefile
