@@ -6,7 +6,7 @@
 #    By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 18:07:38 by ebondi            #+#    #+#              #
-#    Updated: 2022/10/27 11:57:51 by ebondi           ###   ########.fr        #
+#    Updated: 2022/10/30 18:13:44 by ebondi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,11 @@ fclean:
 	@make fclean -C libft
 	@printf "\033[1;91mRemoving objects...\n"
 
-re: fclean all
-	@make fclean -C libft
-	@make -C libft
-	
+re: relibft fclean all
+
+relibft:
+		@make fclean -C libft
+		@make -C libft
 vai: re
 	@./$(NAME)
 
@@ -48,4 +49,4 @@ test: test.c re
 	@gcc test.c libft/libft.a -o tests
 	@./tests | ./minishell
 
-.PHONY:	all clean fclean re bonus vai leaks test
+.PHONY:	all clean fclean re bonus vai leaks test relibft
