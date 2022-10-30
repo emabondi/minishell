@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/30 18:48:19 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/30 20:16:11 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ int	execute_commands(t_mini *mini)
 	while (mini->cmds[i])
 	{
 		cmd = ft_smart_split(mini->cmds[i], ' ');
-		if (cmd[i][0] != '\0' && ft_strncmp(cmd[i], "exit", 4) == 0 && \
-			ft_strlen (cmd[i]) == 4)
+		if (cmd[0][0] != '\0' && ft_strncmp(cmd[0], "exit", 4) == 0 && \
+			ft_strlen (cmd[0]) == 4)
 			builtin_exit(mini);
-		else if (ft_strncmp(cmd[i], "env", 3) == 0 && \
-			ft_strlen(cmd[i]) == 3)
+		else if (ft_strncmp(cmd[0], "env", 3) == 0 && \
+			ft_strlen(cmd[0]) == 3)
 			builtin_env(mini);
-		else if (ft_strncmp(cmd[i], "export", 6) == 0 && \
-			ft_strlen(cmd[i]) == 6)
+		else if (ft_strncmp(cmd[0], "export", 6) == 0 && \
+			ft_strlen(cmd[0]) == 6)
 			builtin_export(mini);
+
 		//else if (ft_strncmp(cmd[i], "echo", 4) == 0 && \
 		//	ft_strlen(cmd[i]) == 4)
 		//	builtin_echo(mini);
@@ -44,7 +45,8 @@ int	execute_commands(t_mini *mini)
 		//	builtin_unset(mini);
 		//else
 			//exit_status = ft_ext_cmd(cmd, mini);
-			i++;
+		ft_free_matrix(cmd);
+		i++;
 	}
 	return (1);
 }
@@ -67,8 +69,6 @@ void	get_command(t_mini *mini)
 		mini->cmds = ft_smart_split(buff, '|');
 		if (!execute_commands(mini))
 			return ;
-		while (mini->cmds[++i] != NULL)
-			printf("%s\n", mini->cmds[i]);
 		ft_free_matrix(mini->cmds);
 	}
 	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)

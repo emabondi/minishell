@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:49:40 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/30 18:49:57 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/30 20:20:03 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ char	**ft_smart_split(char *s, char c)
 	{
 		len = ft_rowlen(s, c);
 		matrix[row] = (char *) malloc (sizeof(char) * (len + 1));
+		while (s[0] == c)
+			s++;
 		ft_strlcpy(matrix[row], s, len + 1);
 		s += len + 1;
 		row++;

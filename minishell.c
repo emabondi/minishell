@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/29 18:11:35 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/10/30 20:12:05 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ int	main(int argc, char *argv[], char **env)
 		get_command(&mini);
 	}
 	init_signals(1);
-	ft_putendl_fd("exit", 1);
+	ft_putstr_fd("exit", 1);
 	return (exit_status);
 }
