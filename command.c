@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/30 20:16:11 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/31 17:49:57 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	execute_commands(t_mini *mini)
 {
 	int		i;
+	//int		j;
 	char	**cmd;
 
 	i = 0;
@@ -30,7 +31,6 @@ int	execute_commands(t_mini *mini)
 		else if (ft_strncmp(cmd[0], "export", 6) == 0 && \
 			ft_strlen(cmd[0]) == 6)
 			builtin_export(mini);
-
 		//else if (ft_strncmp(cmd[i], "echo", 4) == 0 && \
 		//	ft_strlen(cmd[i]) == 4)
 		//	builtin_echo(mini);
@@ -43,8 +43,11 @@ int	execute_commands(t_mini *mini)
 		//else if (ft_strncmp(cmd[i], "unset", 5) == 0 && \
 		//	ft_strlen(cmd[i]) == 5)
 		//	builtin_unset(mini);
-		//else
-			//exit_status = ft_ext_cmd(cmd, mini);
+		else
+			ft_ext_cmd(mini, cmd);
+		//j = -1;
+		//while (cmd[++j])
+		//	printf("%s\n", cmd[j]);
 		ft_free_matrix(cmd);
 		i++;
 	}

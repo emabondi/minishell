@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/29 18:54:09 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/31 18:07:05 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	builtin_exit(t_mini *mini);
 void	builtin_env(t_mini *mini);
 void	builtin_export(t_mini *mini);
 
-int		ft_ext_cmd(char **cmd, t_mini *mini);
+int		ft_ext_cmd(t_mini *mini, char **cmd);
+char	*ft_get_path(t_mini *mini);
 
 #endif

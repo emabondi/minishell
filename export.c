@@ -28,10 +28,8 @@ char	**ft_export(t_mini *mini)
 
 	i = 0;
 	o = 0;
-
 	mini->export = (char **) malloc \
 		(sizeof(char *) * ft_len_matrix(mini->env) + 1);
-
 	while (mini->env[i])
 	{
 		mini->export[i] = ft_strdup(mini->env[i]);
