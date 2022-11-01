@@ -52,7 +52,6 @@ void	init(t_mini *mini, char **env)
 {
 	mini->exit = 0;
 	mini->env = ft_env_copy(env);
-	mini->lvl = 1;
 	init_signals(0);
 }
 

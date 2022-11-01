@@ -35,7 +35,7 @@ char	*ft_shlvl_update(char *env)
 	return (d);
 }
 
-void	ft_swap(t_mini *mini, long long o, long long i)
+void	ft_swap(t_mini *mini, int o, int i)
 {
 	char	*temp;
 	int		j;
