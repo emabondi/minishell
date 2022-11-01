@@ -1,8 +1,42 @@
 #include "minishell.h"
 
+char	**ft_env_copy(char **env)
+{
+	int		i;
+	char **copy;
+
+	i = 0;
+	copy = (char **)malloc(sizeof(char *) * ft_len_matrix(env) + 1);
+	while (env[i])
+	{
+		if (!ft_strncmp(env[i], "SHLVL=", 6))
+			copy[i] = ft_shlvl_update(env[i]);
+		else
+			copy[i] = ft_strdup(env[i]);
+		i++;
+	}
+	copy[i] = NULL;
+	return (copy);
+}
+
+char	*ft_shlvl_update(char *env)
+{
+	int		i;
+	char	*d;
+	char	*lvl;
+
+	lvl = ft_substr(env, 6, ft_strlen(env));
+	i = ft_atoi(lvl);
+	free(lvl);
+	lvl = ft_itoa(i + 1);
+	d = ft_strjoin("SHLVL=", lvl);
+	free(lvl);
+	return (d);
+}
+
 void	ft_swap(t_mini *mini, long long o, long long i)
 {
-	char			*temp;
+	char	*temp;
 	int		j;
 
 	temp = NULL;

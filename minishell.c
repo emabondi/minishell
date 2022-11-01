@@ -50,7 +50,8 @@ void	init_signals(int startorend)
 void	init(t_mini *mini, char **env)
 {
 	mini->exit = 0;
-	mini->env = env;
+	mini->env = ft_env_copy(env);
+	mini->lvl = 1;
 	init_signals(0);
 }
 
@@ -74,11 +75,13 @@ int	main(int argc, char *argv[], char **env)
 	(void)argc;
 	(void)argv;
 	init(&mini, env);
+
+	// write(1, "a", 1);
 	while (mini.exit == 0)
 	{
 		get_command(&mini);
 	}
-	//ft_free_matrix(mini.env);
+	ft_free_matrix(mini.env);
 	init_signals(1);
 	return (exit_status);
 }

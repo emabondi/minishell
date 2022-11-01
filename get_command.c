@@ -24,22 +24,6 @@ int	ft_len_matrix(char **matrix)
 	return (i);
 }
 
-char	**ft_env_copy(char **env)
-{
-	char	**env_copy;
-	int		i;
-
-	i = 0;
-	env_copy = (char **)malloc(sizeof(char *) * ft_len_matrix(env) + 1);
-	while (env[i])
-	{
-		env_copy[i] = ft_strdup(env[i]);
-		i++;
-	}
-	env_copy[i] = NULL;
-	return (env_copy);
-}
-
 void	get_command(t_mini *mini)
 {
 	char	*buff;

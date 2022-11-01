@@ -39,5 +39,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	k = ft_strlen(s1);
 	while (ft_checkset(s1[k -1], (char *)set) && k > c)
 		k--;
+	printf("%s\n", ft_substr((char *)s1, c, k - c));
 	return (ft_substr((char *)s1, c, k - c));
+
 }

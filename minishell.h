@@ -26,6 +26,10 @@ typedef struct s_minishell
 	int		exit;
 	char	**env;
 	char	**export;
+
+	int		lvl;
+	// char	*shlvl;
+
 }		t_mini;
 
 int	exit_status;
@@ -46,5 +50,8 @@ void	ft_check_parser(char *str);
 char	**ft_export(t_mini *mini);
 void	ft_swap(t_mini *mini, long long o, long long i);
 void	ft_free_matrix(char **env);
+char	*ft_shlvl_update(char *env);
+void	ft_shlvl_increment(char *argv[], t_mini *mini);
+char	*ft_shlvl_extractor(t_mini *mini);
 
 #endif
