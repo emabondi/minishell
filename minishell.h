@@ -48,6 +48,8 @@ void	ft_free_matrix(char **env);
 char	*ft_shlvl_update(char *env);
 void	ft_shlvl_increment(char *argv[], t_mini *mini);
 char	*ft_shlvl_extractor(t_mini *mini);
+void	builtin_unset(t_mini *mini, char **cmd);
+char	**builtin_unset2(t_mini *mini, char **env, char *str);
 
 //command
 void	get_command(t_mini *mini);

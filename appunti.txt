@@ -5,12 +5,11 @@ export argomento=""
 export argomento=valore
 export argomento
 unset
-shelvl
+
 $? cambiare exit status
 check expand con "$HOME" //FATTO
 fix get_env_var con "$HOM" o similari //FATTO
 
 questo comando fa segfault: "| |"
 
-LEAKS FREE EXPORT
 alla fine pulire il makefile

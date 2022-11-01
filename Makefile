@@ -14,7 +14,7 @@
 READLINE_FLAGS = -L/usr/include -lreadline -lcurses -L /Users/$(USER)/.brew/opt/readline/lib -I /Users/$(USER)/.brew/opt/readline/include
 NAME = minishell
 FLAGS = -Wall -Werror -Wextra
-OBJS = minishell.c command.c expand_env.c ft_parser.c export.c utils.c smart_split.c builtins.c external_command.c
+OBJS = minishell.c command.c expand_env.c ft_parser.c export.c utils.c smart_split.c builtins.c external_command.c unset.c
 LIBFT = libft/libft.a
 
 $(NAME):$(OBJS)

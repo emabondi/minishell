@@ -40,9 +40,9 @@ int	execute_commands(t_mini *mini)
 		//else if (ft_strncmp(cmd[i], "pwd", 3) == 0 && \
 		//	ft_strlen(cmd[i]) == 3)
 		//	builtin_cd(mini);
-		//else if (ft_strncmp(cmd[i], "unset", 5) == 0 && \
-		//	ft_strlen(cmd[i]) == 5)
-		//	builtin_unset(mini);
+		else if (ft_strncmp(cmd[0], "unset", 5) == 0 && \
+			ft_strlen(cmd[0]) == 5)
+			builtin_unset(mini, cmd);
 		else
 			ft_ext_cmd(mini, cmd);
 		//j = -1;
