@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/18 14:42:36 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/31 17:17:47 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,16 +106,29 @@ char	*expand_env_var2(t_mini *mini, char *str, int i)
 
 char	*expand_env_var(t_mini *mini, char *str)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '$' && ft_isalnum(str[i + 1]))
 			str = expand_env_var2(mini, str, i);
-		else if (str[i] == 39)
-			while (str[++i] && str[i] != 39)
+		else if (str[i] == 34)
+		{
+			i++;
+			while (str[i] && str[i] != 34)
+			{
+				if (str[i] == '$' && ft_isalnum(str[i + 1]))
+					str = expand_env_var2(mini, str, i);
 				i++;
+			}
+		}
+		else if (str[i] == 39)
+		{
+			i++;
+			while (str[i] && str[i] != 39)
+				i++;
+		}
 		i++;
 	}
 	return (str);

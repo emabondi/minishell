@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/15 20:57:07 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/10/31 16:24:59 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	sig_handler(int signal)
 		rl_redisplay();
 		exit_status = 1;
 	}
-	else if (signal == SIGQUIT){
+	else if (signal == SIGQUIT)
+	{
 		exit_status = 127;
 		//exit(1);
 	}
@@ -83,5 +84,6 @@ int	main(int argc, char *argv[], char **env)
 	}
 	ft_free_matrix(mini.env);
 	init_signals(1);
+	ft_putstr_fd("exit", 1);
 	return (exit_status);
 }
