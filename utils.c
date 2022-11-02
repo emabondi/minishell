@@ -32,6 +32,23 @@ int	ft_len_matrix(char **matrix)
 	return (i);
 }
 
+void	builtin_pwd(t_mini *mini)
+{
+	char	*pwd;
+
+	pwd = getcwd(NULL, 0);
+	if (pwd)
+	{
+		ft_putendl_fd(pwd, 1);
+		exit_status = 0;
+		free(pwd);
+		return ;
+	}
+	exit_status = 1;
+	free(pwd);
+	(void)mini;
+}
+
 // char	**ft_env_copy(char **env)
 // {
 // 	char	**env_copy;

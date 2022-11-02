@@ -26,23 +26,42 @@ void	builtin_env(t_mini *mini)
 	i = 0;
 	while (mini->env[i])
 	{
-		printf("%s", mini->env[i]);
+		if(ft_strchr(mini->env[i], '='))
+			printf("%s\n", mini->env[i]);
 		i++;
-		printf("\n");
 	}
 }
 
-void	builtin_export(t_mini *mini)
+void	ft_only_export(t_mini *mini)
 {
-	int	i;
+	int		i;
+	char	*key;
+	char	*value;
 
 	i = 0;
 	mini->export = ft_export(mini);
 	while (mini->env[i])
 	{
-		printf("declare -x %s", mini->export[i]);
+		key = ft_substr(mini->env[i], 0, ft_strchr(mini->env[i], '=') - mini->env[i]);
+		if (ft_strchr(mini->env[i], '=') != NULL)
+		{
+			value = ft_strchr(mini->env[i], '=') + 1;
+			printf("declare -x %s=\"%s\"\n", key, value);
+		}
+		else
+			printf("declare -x %s\n", key);
+		free(key); 
 		i++;
-		printf("\n");
 	}
 	ft_free_matrix(mini->export);
+}
+
+void	builtin_export(t_mini *mini, char **cmd)
+{
+	if (!cmd[1])
+	{
+		ft_only_export(mini);
+		return ;
+	}
+	
 }

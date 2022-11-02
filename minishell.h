@@ -50,6 +50,7 @@ void	ft_shlvl_increment(char *argv[], t_mini *mini);
 char	*ft_shlvl_extractor(t_mini *mini);
 void	builtin_unset(t_mini *mini, char **cmd);
 char	**builtin_unset2(t_mini *mini, char **env, char *str);
+void	builtin_pwd(t_mini *mini);
 
 //command
 void	get_command(t_mini *mini);
@@ -61,7 +62,7 @@ int		ft_check_pipe(char *str, t_mini *mini);
 char	**ft_smart_split(char *s, char c);
 void	builtin_exit(t_mini *mini);
 void	builtin_env(t_mini *mini);
-void	builtin_export(t_mini *mini);
+void	builtin_export(t_mini *mini, char **cmd);
 
 int		ft_ext_cmd(t_mini *mini, char **cmd);
 char	*ft_get_path(t_mini *mini);
