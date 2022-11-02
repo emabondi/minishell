@@ -6,7 +6,7 @@
 /*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:24:38 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/29 17:05:06 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/02 18:35:24 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,27 @@ void	builtin_env(t_mini *mini)
 	i = 0;
 	while (mini->env[i])
 	{
-		if(ft_strchr(mini->env[i], '='))
+		if (ft_strchr(mini->env[i], '='))
 			printf("%s\n", mini->env[i]);
 		i++;
 	}
+}
+
+void	builtin_pwd(t_mini *mini)
+{
+	char	*pwd;
+
+	pwd = getcwd(NULL, 0);
+	if (pwd)
+	{
+		ft_putendl_fd(pwd, 1);
+		exit_status = 0;
+		free(pwd);
+		return ;
+	}
+	exit_status = 1;
+	free(pwd);
+	(void)mini;
 }
 
 void	ft_only_export(t_mini *mini)
@@ -42,7 +59,8 @@ void	ft_only_export(t_mini *mini)
 	mini->export = ft_export(mini);
 	while (mini->env[i])
 	{
-		key = ft_substr(mini->env[i], 0, ft_strchr(mini->env[i], '=') - mini->env[i]);
+		key = ft_substr(mini->env[i], 0, \
+			ft_strchr(mini->env[i], '=') - mini->env[i]);
 		if (ft_strchr(mini->env[i], '=') != NULL)
 		{
 			value = ft_strchr(mini->env[i], '=') + 1;
@@ -50,7 +68,7 @@ void	ft_only_export(t_mini *mini)
 		}
 		else
 			printf("declare -x %s\n", key);
-		free(key); 
+		free (key);
 		i++;
 	}
 	ft_free_matrix(mini->export);
@@ -63,5 +81,4 @@ void	builtin_export(t_mini *mini, char **cmd)
 		ft_only_export(mini);
 		return ;
 	}
-	
 }

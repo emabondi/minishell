@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:05:21 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/29 18:56:00 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/02 18:33:40 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,6 @@ int	ft_len_matrix(char **matrix)
 		i++;
 	}
 	return (i);
-}
-
-void	builtin_pwd(t_mini *mini)
-{
-	char	*pwd;
-
-	pwd = getcwd(NULL, 0);
-	if (pwd)
-	{
-		ft_putendl_fd(pwd, 1);
-		exit_status = 0;
-		free(pwd);
-		return ;
-	}
-	exit_status = 1;
-	free(pwd);
-	(void)mini;
 }
 
 // char	**ft_env_copy(char **env)
