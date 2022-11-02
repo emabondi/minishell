@@ -6,7 +6,7 @@
 /*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/10/31 18:20:51 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/02 17:27:14 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	ft_find_path(t_mini *mini, char **cmd)
 		if (access(pos_path[i], R_OK) == 0)
 			printf("%s\n", "EXECVE");
 		i++;
-		//if (access())	
 		free (temp);
 	}
 	free (path);
