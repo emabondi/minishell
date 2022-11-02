@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unset.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/02 18:34:17 by atarsi            #+#    #+#             */
+/*   Updated: 2022/11/02 18:34:19 by atarsi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 char	*ft_get_env_value(char **env, char *str)
@@ -25,7 +37,7 @@ char **builtin_unset2(t_mini *mini, char **env, char *str)
 	new = (char **)malloc(sizeof(char *) * ft_len_matrix(env));
 	while (env[i])
 	{
-		if(ft_strncmp(env[i], str, ft_strlen(str)))
+		if (ft_strncmp(env[i], str, ft_strlen(str)))
 		{
 			new[j] = ft_strdup(env[i]);
 			j++;
@@ -45,7 +57,7 @@ void	builtin_unset(t_mini *mini, char **cmd)
 	i = 1;
 	while (cmd[i])
 	{
-		if(ft_get_env_value(mini->env, cmd[i]) != NULL)
+		if (ft_get_env_value(mini->env, cmd[i]) != NULL)
 			mini->env = builtin_unset2(mini, mini->env, cmd[i]);
 		i++;
 	}
