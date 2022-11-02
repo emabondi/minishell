@@ -51,6 +51,7 @@ char	*ft_shlvl_extractor(t_mini *mini);
 void	builtin_unset(t_mini *mini, char **cmd);
 char	**builtin_unset2(t_mini *mini, char **env, char *str);
 void	builtin_pwd(t_mini *mini);
+char	*ft_get_env_value(char **env, char *str);
 
 //command
 void	get_command(t_mini *mini);

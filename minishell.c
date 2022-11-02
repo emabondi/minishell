@@ -62,10 +62,12 @@ void	ft_free_matrix(char **env)
 	i = 0;
 	while (env[i])
 	{
-		free(env[i]);
+		if (env[i])
+			free(env[i]);
 		i++;
 	}
-	free(env);
+	if (env)
+		free(env);
 }
 
 int	main(int argc, char *argv[], char **env)
