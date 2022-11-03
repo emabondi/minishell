@@ -31,9 +31,9 @@ int	execute_commands(t_mini *mini)
 		else if (ft_strncmp(cmd[0], "export", 6) == 0 && \
 			ft_strlen(cmd[0]) == 6)
 			builtin_export(mini, cmd);
-		//else if (ft_strncmp(cmd[i], "echo", 4) == 0 && \
-		//	ft_strlen(cmd[i]) == 4)
-		//	builtin_echo(mini);
+		else if (ft_strncmp(cmd[i], "echo", 4) == 0 && \
+			ft_strlen(cmd[i]) == 4)
+			builtin_echo(cmd);
 		else if (ft_strncmp(cmd[i], "cd", 2) == 0 && \
 			ft_strlen(cmd[i]) == 2)
 			builtin_cd(mini, cmd);

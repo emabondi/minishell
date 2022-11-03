@@ -25,6 +25,9 @@ $? cambiare exit status
 questo comando fa segfault: "| |"
 provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
 
-cd e basta va in home
+echo '$HOME' && "$HOME" non devono stampare le virgolette
+= trovare un modo per gestire le virgolette in generale
+
+echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split = tokenizer?
 
 alla fine pulire il makefile

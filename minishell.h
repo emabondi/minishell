@@ -55,6 +55,7 @@ char	*ft_get_env_value(char **env, char *str);
 void	ft_export_insert(t_mini *mini, char **env, char *key, char *value);
 void	ft_export_two(t_mini *mini, char *key, char *value, int i);
 void	ft_only_export(t_mini *mini);
+void	builtin_echo(char **cmd);
 
 //command
 void	get_command(t_mini *mini);

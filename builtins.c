@@ -83,6 +83,8 @@ void	builtin_export(t_mini *mini, char **cmd)
 	}
 	while (cmd[1][i])
 	{
+		if (cmd[1][i] == '=' || cmd[1][i] == '+')
+			break ;
 		if (!ft_isalnum(cmd[1][i]))
 		{
 			ft_putstr_fd("minisburo: export: '", 2);
