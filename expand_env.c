@@ -42,8 +42,9 @@ char	*ft_get_env_var(t_mini *mini, char *str)
 		return (NULL);
 	while (mini->env[i])
 	{
-		if (confront_env_var(mini->env[i], str))
-			return (ft_strchr(mini->env[i], '=') + 1);
+		if (confront_env_var(mini->env[i], str) &&\
+			ft_strlen(mini->env[i]) > ft_strlen(str) + 1)
+				return (ft_strchr(mini->env[i], '=') + 1);
 		i++;
 	}
 	return (NULL);

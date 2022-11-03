@@ -79,6 +79,8 @@ void	ft_export_replace(char **env, char *key, char *value)
 	char	*a;
 
 	i = 0;
+	if (!value)
+		return ;
 	while (env[i])
 	{
 		if (!ft_strncmp(env[i], key, ft_strlen(key)) &&\
@@ -132,11 +134,12 @@ void	ft_export_insert(t_mini *mini, char **env, char *key, char *value)
 		new[i] = ft_strdup(env[i]);
 		i++;
 	}
+
 	insert = ft_strjoin(key, "=");
 	if (value)
 		new[i] = ft_strjoin(insert, value);
 	else
-		new[i] = ft_strdup(insert);
+		new[i] = ft_strdup(key);
 	free(insert);
 	new[i+1] = NULL;
 	ft_free_matrix(mini->env);
@@ -153,15 +156,10 @@ void	ft_export_two(t_mini *mini, char *key, char *value, int i)
 		ft_export_insert(mini, mini->env, key, value);
 }
 
-void	builtin_export(t_mini *mini, char **cmd)
+void	builtin_export2(t_mini *mini, char **cmd)
 {
 	char	*key;
 
-	if (!cmd[1])
-	{
-		ft_only_export(mini);
-		return ;
-	}
 	if (ft_strchr(cmd[1], '=') && *(ft_strchr(cmd[1], '=') - 1) == '+')
 	{
 		key = ft_substr(cmd[1], 0, ft_strchr(cmd[1], '+') - cmd[1]);
@@ -178,4 +176,30 @@ void	builtin_export(t_mini *mini, char **cmd)
 		ft_export_two(mini, key, NULL, 3);
 	}
 	free(key);
+}
+
+void	builtin_export(t_mini *mini, char **cmd)
+{
+	int	i;
+
+	i = 0;
+	if (!cmd[1])
+	{
+		ft_only_export(mini);
+		return ;
+	}
+	while(cmd[1][i])
+	{
+		if (!ft_isalnum(cmd[1][i]))
+		{
+			ft_putstr_fd("minisburo: export: '", 2);
+			ft_putstr_fd(cmd[1], 2);
+			ft_putendl_fd("': not a valid identifier", 2);
+			exit_status = 1;
+			return ;
+		}
+		i++;
+	}
+	builtin_export2(mini, cmd);
+	exit_status = 0;
 }
