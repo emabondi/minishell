@@ -71,5 +71,6 @@ void	builtin_export(t_mini *mini, char **cmd);
 int		ft_ext_cmd(t_mini *mini, char **cmd);
 char	*ft_get_path(t_mini *mini);
 int		ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd);
+void	builtin_cd(t_mini *mini, char **cmd);
 
 #endif

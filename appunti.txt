@@ -1,4 +1,4 @@
---da testare il caso di variabile vuota per ft_get_env_var
+da testare il caso di variabile vuota per ft_get_env_var
 	(post echo)
 
 	export argomento=""
