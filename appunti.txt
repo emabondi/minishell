@@ -8,7 +8,6 @@ export argomento
 $? cambiare exit status
 check expand con "$HOME" //FATTO
 fix get_env_var con "$HOM" o similari //FATTO
-
 questo comando fa segfault: "| |"
-
+provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
 alla fine pulire il makefile
