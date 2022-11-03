@@ -6,13 +6,13 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/03 14:49:05 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/03 14:51:00 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_forkamelo_tutto(t_mini *mini, char *cmd, char *path)
+int	ft_forkamelo_tutto(t_mini *mini, char *path)
 {
 	int		ret;
 	pid_t	pid;
@@ -20,10 +20,7 @@ int	ft_forkamelo_tutto(t_mini *mini, char *cmd, char *path)
 	ret = 0;
 	pid = fork();
 	if (pid == 0)
-	{
-		execve(path, &cmd, mini->env);
-		ft_putendl_fd (path, 1);
-	}
+		execve(path, mini->cmds, mini->env);
 	else
 		waitpid(pid, &ret, 0);
 	return (ret);
@@ -60,10 +57,7 @@ int	ft_find_path(t_mini *mini, char **cmd)
 		free (pos_path[i]);
 		pos_path[i] = ft_strjoin(temp, cmd[0]);
 		if (access(pos_path[i], R_OK) == 0)
-		{
-			ft_forkamelo_tutto(mini, cmd[0], temp);
-			printf("%s\n", "EXECVE");
-		}
+			ft_forkamelo_tutto(mini, pos_path[i]);
 		i++;
 		free (temp);
 	}
