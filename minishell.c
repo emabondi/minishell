@@ -77,7 +77,6 @@ int	main(int argc, char *argv[], char **env)
 	(void)argc;
 	(void)argv;
 	init(&mini, env);
-
 	// write(1, "a", 1);
 	while (mini.exit == 0)
 	{

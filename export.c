@@ -45,11 +45,11 @@ void	ft_swap(t_mini *mini, int o, int i)
 	while (j < o - 1 - i)
 	{
 		if (ft_strncmp (mini->export[j], \
-			mini->export[j+1], ft_strlen (mini->export[j])) > 0)
+			mini->export[j + 1], ft_strlen (mini->export[j])) > 0)
 		{
 			temp = mini->export[j];
-			mini->export[j] = mini->export[j+1];
-			mini->export[j+1] = temp;
+			mini->export[j] = mini->export[j + 1];
+			mini->export[j + 1] = temp;
 		}
 	j++;
 	}

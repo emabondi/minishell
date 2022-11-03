@@ -44,7 +44,7 @@ char	*ft_get_env_var(t_mini *mini, char *str)
 	{
 		if (confront_env_var(mini->env[i], str) &&\
 			ft_strlen(mini->env[i]) > ft_strlen(str) + 1)
-				return (ft_strchr(mini->env[i], '=') + 1);
+			return (ft_strchr(mini->env[i], '=') + 1);
 		i++;
 	}
 	return (NULL);
@@ -87,7 +87,8 @@ char	*expand_env_var2(t_mini *mini, char *str, int i)
 	while (str[i + j] && !ft_isspace(str[i + j]) && ft_isalnum(str[i + j]))
 		j++;
 	var = ft_substr(str + i, 0, j);
-	expanded_var = ft_get_env_var(mini, var);if (expanded_var != NULL)
+	expanded_var = ft_get_env_var(mini, var);
+	if (expanded_var != NULL)
 	{
 		free(var);
 		var = ft_substr(str, 0, i);
@@ -124,9 +125,8 @@ char	*expand_env_var(t_mini *mini, char *str)
 		}
 		else if (str[i] == 39)
 		{
+			while (str[i++] && str[i++] != 39)
 			i++;
-			while (str[i] && str[i] != 39)
-				i++;
 		}
 		i++;
 	}
