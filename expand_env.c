@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/02 18:29:32 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/03 15:11:46 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,7 @@ char	*expand_env_var2(t_mini *mini, char *str, int i)
 	while (str[i + j] && !ft_isspace(str[i + j]) && ft_isalnum(str[i + j]))
 		j++;
 	var = ft_substr(str + i, 0, j);
-	expanded_var = ft_get_env_var(mini, var);
-	printf("expanded:%s\n", expanded_var);
-	if (expanded_var != NULL)
+	expanded_var = ft_get_env_var(mini, var);if (expanded_var != NULL)
 	{
 		free(var);
 		var = ft_substr(str, 0, i);

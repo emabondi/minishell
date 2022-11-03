@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/31 18:07:05 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/03 15:07:30 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void	builtin_export(t_mini *mini, char **cmd);
 
 int		ft_ext_cmd(t_mini *mini, char **cmd);
 char	*ft_get_path(t_mini *mini);
+int		ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd);
 
 #endif
