@@ -6,11 +6,74 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/04 16:53:23 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/04 21:02:38 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*ft_delete_quotes(char	*cmd, char quote)
+{
+	int		i;
+	int		k;
+	char	*new;
+
+	i = 0;
+	while (cmd[i])
+	{
+		new = malloc(sizeof(char) * ft_strlen(cmd) - 1);
+		k = 0;
+		while (cmd[i])
+		{
+			if (cmd[i] != quote)
+			{
+				new[k] = cmd[i];
+				k++;
+			}
+			i++;
+		}
+		new[k] = 0;
+	}
+	free(cmd);
+	return (new);
+}
+
+char	*ft_quotes2(char *cmd, int *flag, char quote, int b)
+{
+	if (*flag == b)
+		*flag = 0;
+	else
+		*flag = b;
+	return (ft_delete_quotes(cmd, quote));
+}
+
+char	**ft_quotes(char **cmd)
+{
+	int		i;
+	int		j;
+	int		flag;
+
+	i = 0;
+	flag = 0;
+	while (cmd[i])
+	{
+		j = 0;
+		while (cmd[i][j])
+		{
+			if (cmd[i][j] == '\'' && flag != 2)
+			{
+				cmd[i] = ft_quotes2(cmd[i], &flag, '\'', 1);
+			}
+			else if (cmd[i][j] == '\"' && flag != 1)
+			{
+				cmd[i] = ft_quotes2(cmd[i], &flag, '\"', 2);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (cmd);
+}
 
 int	execute_commands(t_mini *mini)
 {
@@ -22,6 +85,7 @@ int	execute_commands(t_mini *mini)
 	while (mini->cmds[i])
 	{
 		cmd = ft_smart_split(mini->cmds[i], ' ');
+		cmd = ft_quotes(cmd);
 		if (cmd[0][0] != '\0' && ft_strncmp(cmd[0], "exit", 4) == 0 && \
 			ft_strlen (cmd[0]) == 4)
 			builtin_exit(mini);
