@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/03 15:07:30 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/04 16:52:15 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ void	builtin_echo(char **cmd);
 void	get_command(t_mini *mini);
 
 //syntax check
-int		ft_check_quotes(char *str, t_mini *mini);
-int		ft_check_pipe(char *str, t_mini *mini);
+int		ft_check_quotes(char *str);
+int		ft_check_pipe(char *str);
+int		ft_check_pipe2(char *str);
 
 char	**ft_smart_split(char *s, char c);
 void	builtin_exit(t_mini *mini);

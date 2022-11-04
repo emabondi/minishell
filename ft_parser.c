@@ -3,34 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:30:10 by atarsi            #+#    #+#             */
-/*   Updated: 2022/10/27 08:32:04 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/04 16:46:26 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_check_pipe(char *str, t_mini *mini)
+int	ft_check_pipe2(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i++] == '|')
+			while (ft_isspace(str[i]))
+				i++;
+		if (str[i] == '|')
+			return (0);
+	}
+	return (1);
+}
+
+int	ft_check_pipe(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	if (str[i] == '|')
+	if (str[i] == '|' || !ft_check_pipe2(str))
 	{
 		free(str);
-		ft_putstr_fd("minisburo: syntax error\n", 0);
-		mini->exit = 1;
+		ft_putstr_fd("minisburo: syntax error near unexpected token `|'\n", 0);
 		exit_status = 258;
 		return (0);
 	}
 	return (1);
 }	
 
-int	ft_check_quotes(char *str, t_mini *mini)
+int	ft_check_quotes(char *str)
 {
 	int	i;
 	int	dq;
@@ -50,8 +65,12 @@ int	ft_check_quotes(char *str, t_mini *mini)
 	if (dq % 2 != 0 || q % 2 != 0)
 	{
 		free(str);
-		ft_putstr_fd("minisburo: syntax error\n", 0);
-		mini->exit = 1;
+		if (dq % 2 != 0)
+			ft_putstr_fd("minisburo: syntax error \
+				near unexpected token `\"'\n", 2);
+		else
+			ft_putstr_fd("minisburo: syntax error \
+				near unexpected token `\''\n", 2);
 		exit_status = 258;
 		return (0);
 	}

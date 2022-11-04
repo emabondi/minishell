@@ -30,4 +30,6 @@ echo '$HOME' && "$HOME" non devono stampare le virgolette
 
 echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split = tokenizer?
 
+se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
+
 alla fine pulire il makefile

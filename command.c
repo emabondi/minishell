@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/02 18:52:01 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/04 16:53:23 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	get_command(t_mini *mini)
 	buff = readline("minisburo:");
 	if (buff != NULL && ft_strlen(buff) > 0)
 	{
-		if (!ft_check_pipe(buff, mini) || !ft_check_quotes(buff, mini))
-			return ;
 		add_history(buff);
+		if (!ft_check_pipe(buff) || !ft_check_quotes(buff))
+			return ;
 		buff = expand_env_var(mini, buff);
 		mini->cmds = ft_smart_split(buff, '|');
 		if (!execute_commands(mini))
