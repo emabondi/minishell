@@ -24,11 +24,11 @@ $? cambiare exit status
 questo comando fa segfault: "| |"
 provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
 
-echo '$HOME' && "$HOME" non devono stampare le virgolette
-= trovare un modo per gestire le virgolette in generale
+FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette
+	= trovare un modo per gestire le virgolette in generale
 
-echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split = tokenizer?
+FATTO--echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split = tokenizer?
 
-se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
+FATTO--se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
 
 alla fine pulire il makefile

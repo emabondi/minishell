@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/07 16:59:51 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:59:07 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd)
 	int		ret;
 	pid_t	pid;
 
-	ret = 0;
+	ret = 1;
 	pid = fork();
 	if (pid == 0)
 	{
@@ -56,7 +56,13 @@ int	ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd)
 		exit (ret);
 	}	
 	else
-		waitpid(pid, &ret, 0);
+	{
+		ret = waitpid(pid, &ret, 0);
+		//if (WIFEXITED)
+			ret = WEXITSTATUS(ret);
+			
+		printf ("ret:%d\n", ret);
+	}
 	return (ret);
 }
 
@@ -86,7 +92,6 @@ int	ft_check_access(char **pos_path, char **cmd, int *i)
 		pos_path[*i] = ft_strjoin(temp, cmd[0]);
 		if (access(pos_path[*i], R_OK) == 0)
 		{
-			printf ("ciao\n");
 			free (temp);
 			return (1);
 		}

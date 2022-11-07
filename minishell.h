@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/07 16:57:44 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:58:10 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <termios.h>
 # include <dirent.h>
 # include <fcntl.h>
+# include <sys/wait.h>
 
 typedef struct s_minishell
 {

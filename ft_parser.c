@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:30:10 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/04 16:46:26 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:28:26 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ int	ft_check_pipe2(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i++] == '|')
+		if (str[i] == '|')
+		{
+			i++;
 			while (ft_isspace(str[i]))
 				i++;
-		if (str[i] == '|')
-			return (0);
+			if (str[i] == '|')
+				return (0);
+		}
+		i++;
 	}
 	return (1);
 }
