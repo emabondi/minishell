@@ -1,12 +1,11 @@
 da testare il caso di variabile vuota per ft_get_env_var
 	(post echo)
 
-	export argomento=""
+FATTO--export argomento=""
 FATTO--export argomento=valore
-FATTO--export argomento
 FATTO--export lol -> con env: non compare -> con export lol
 FATTO--export lol= -> con env: lol= -> con export lol=""
-	export lol=ciao / lol="ciao" -> con env: lol=ciao -> con export lol="ciao"
+FATTO--export lol=ciao / lol="ciao" -> con env: lol=ciao -> con export lol="ciao"
 FATTO--export *qualcosa non alfnum* -> errore not a valid identifier -> non é un errno
 FATTO--export *variabile giá esistente* -> sostituisce il valore e non duplica
 FATTO--export *variabile* (variabile esiste e ha un valore) -> non fa niente

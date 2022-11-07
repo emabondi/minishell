@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/04 16:52:15 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/07 16:57:44 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <readline/history.h>
 # include <stdlib.h>
 # include <termios.h>
+# include <dirent.h>
+# include <fcntl.h>
 
 typedef struct s_minishell
 {
@@ -65,14 +67,17 @@ int		ft_check_quotes(char *str);
 int		ft_check_pipe(char *str);
 int		ft_check_pipe2(char *str);
 
+//builtin
 char	**ft_smart_split(char *s, char c);
 void	builtin_exit(t_mini *mini);
 void	builtin_env(t_mini *mini);
 void	builtin_export(t_mini *mini, char **cmd);
+void	builtin_cd(t_mini *mini, char **cmd);
 
+//external_command
 int		ft_ext_cmd(t_mini *mini, char **cmd);
 char	*ft_get_path(t_mini *mini);
 int		ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd);
-void	builtin_cd(t_mini *mini, char **cmd);
+int		ft_execve_error(char *path);
 
 #endif
