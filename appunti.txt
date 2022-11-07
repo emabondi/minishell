@@ -1,5 +1,31 @@
-da testare il caso di variabile vuota per ft_get_env_var
-	(post echo)
+
+pid
+
+pipe
+
+tutti gli errori vanno stampati su STDERR	(fd 2)
+
+$$
+
+$? cambiare exit status
+{
+	exit 3 -> exit status = 3
+	exit l -> exit status = 255
+}
+
+provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
+	!SEGFAULT!
+
+alla fine pulire il makefile
+
+_________________________________________________________________________________________________________________________
+
+DA NON GESTIRE--questo comando fa segfault: "| |"
+
+FATTO--da testare il caso di variabile vuota per ft_get_env_var	(post echo)
+
+FATTO--fix get_env_var con "$HOM" o similari
+FATTO--check expand con "$HOME"
 
 FATTO--export argomento=""
 FATTO--export argomento=valore
@@ -10,25 +36,6 @@ FATTO--export *qualcosa non alfnum* -> errore not a valid identifier -> non é u
 FATTO--export *variabile giá esistente* -> sostituisce il valore e non duplica
 FATTO--export *variabile* (variabile esiste e ha un valore) -> non fa niente
 
-tutti gli errori vanno stampati su STDERR(fd 2)
-
-check expand con "$HOME" //FATTO
-fix get_env_var con "$HOM" o similari //FATTO
-
-$? cambiare exit status
-{
-	exit 3 -> exit status = 3
-	exit l -> exit status = 255
-}
-
-questo comando fa segfault: "| |"
-provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
-
-FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette
-	= trovare un modo per gestire le virgolette in generale
-
+FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette = trovare un modo per gestire le virgolette in generale
 FATTO--echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split = tokenizer?
-
 FATTO--se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
-
-alla fine pulire il makefile
