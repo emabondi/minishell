@@ -1,19 +1,11 @@
-da testare il caso di variabile vuota per ft_get_env_var
-	(post echo)
 
-FATTO--export argomento=""
-FATTO--export argomento=valore
-FATTO--export lol -> con env: non compare -> con export lol
-FATTO--export lol= -> con env: lol= -> con export lol=""
-FATTO--export lol=ciao / lol="ciao" -> con env: lol=ciao -> con export lol="ciao"
-FATTO--export *qualcosa non alfnum* -> errore not a valid identifier -> non é un errno
-FATTO--export *variabile giá esistente* -> sostituisce il valore e non duplica
-FATTO--export *variabile* (variabile esiste e ha un valore) -> non fa niente
+pid
 
-tutti gli errori vanno stampati su STDERR(fd 2)
+pipe
 
-check expand con "$HOME" //FATTO
-fix get_env_var con "$HOM" o similari //FATTO
+tutti gli errori vanno stampati su STDERR	(fd 2)
+
+$$
 
 $? cambiare exit status
 {
@@ -21,14 +13,16 @@ $? cambiare exit status
 	exit l -> exit status = 255
 }
 
-questo comando fa segfault: "| |"
 provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
+	!SEGFAULT!
+
+alla fine pulire il makefile
 
 FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette
 	= trovare un modo per gestire le virgolette in generale
 
+FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette = trovare un modo per gestire le virgolette in generale
 FATTO--echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split = tokenizer?
-
 FATTO--se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
 
 lo chiamiamo minisburo o minishell?
