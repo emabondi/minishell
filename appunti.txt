@@ -31,4 +31,6 @@ FATTO--echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati
 
 FATTO--se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
 
+lo chiamiamo minisburo o minishell?
+
 alla fine pulire il makefile

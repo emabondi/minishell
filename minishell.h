@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/07 17:58:10 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/08 11:56:14 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ void	sig_handler(int signal);
 char	**ft_env_copy(char **env);
 char	*ft_get_env_var(t_mini *mini, char *str);
 int		ft_len_matrix(char **matrix);
+
 char	*expand_env_var(t_mini *mini, char *str);
 char	*expand_env_var2(t_mini *mini, char *str, int i);
 char	*expand_env_var3(char *initial_str, char *var);
+char	*ft_whats_exit_status(char *str, int i);
+
 int		ft_isspace(int c);
 int		confront_env_var(char *env_line, char *str);
 char	**ft_export(t_mini *mini);

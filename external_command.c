@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/07 17:59:07 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/08 12:01:22 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,9 @@ int	ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd)
 	}	
 	else
 	{
-		ret = waitpid(pid, &ret, 0);
-		//if (WIFEXITED)
-			ret = WEXITSTATUS(ret);
-			
-		printf ("ret:%d\n", ret);
+		waitpid(pid, &ret, 0);
+		if (WIFEXITED(ret))
+			exit_status = WEXITSTATUS(ret);
 	}
 	return (ret);
 }
@@ -105,7 +103,6 @@ int	ft_find_path(t_mini *mini, char **cmd)
 {
 	char	*path;
 	char	**pos_path;
-	//char	*temp;
 	int		i;
 
 	path = ft_get_path(mini);
@@ -115,16 +112,6 @@ int	ft_find_path(t_mini *mini, char **cmd)
 		ft_forkamelo_tutto(mini, pos_path[i], cmd);
 	else
 		ft_forkamelo_tutto(mini, cmd[0], cmd);
-	//while (pos_path[i])
-	//{
-	//	temp = ft_strjoin(pos_path[i], "/");
-	//	free (pos_path[i]);
-	//	pos_path[i] = ft_strjoin(temp, cmd[0]);
-	//	if (access(pos_path[i], R_OK) == 0)
-	//		ft_forkamelo_tutto(mini, pos_path[i], cmd);
-	//	i++;
-	//	free (temp);
-	//}
 	free (path);
 	ft_free_matrix(pos_path);
 	return (0);
