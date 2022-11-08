@@ -16,7 +16,6 @@ $? cambiare exit status
 provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
 	!SEGFAULT!
 
-alla fine pulire il makefile
 
 FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette
 	= trovare un modo per gestire le virgolette in generale
@@ -26,5 +25,11 @@ FATTO--echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati
 FATTO--se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
 
 lo chiamiamo minisburo o minishell?
+
+echo -n -n -n ciao -n -n
+ad export e unset si possono passare piu variabili da creare/modificare
+i nomi delle variabili di export devono contenere almeno una lettera e solo caratteri alfanumerici
+export deve aggiornare le variabili gia esistenti anche con caratteri speciali es.][
+es var. a="ls -la" , $a esegue il comando
 
 alla fine pulire il makefile
