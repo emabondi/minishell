@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/08 11:56:14 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/10 15:44:08 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,13 @@ int		ft_ext_cmd(t_mini *mini, char **cmd);
 char	*ft_get_path(t_mini *mini);
 int		ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd);
 int		ft_execve_error(char *path);
+
+//pipe
+void	ft_last_pipe(t_mini *mini, char **cmd, int *pid, int *tmp);
+
+//quotes
+char	**ft_quotes(char **cmd);
+char	*ft_quotes2(char *cmd, int *flag, char quote, int b);
+char	*ft_delete_quotes(char	*cmd, char quote);
 
 #endif

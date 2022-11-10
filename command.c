@@ -3,118 +3,112 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/04 21:02:38 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/10 15:48:12 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_delete_quotes(char	*cmd, char quote)
+int	execute_commands(t_mini *mini, char **cmd)
 {
-	int		i;
-	int		k;
-	char	*new;
 
-	i = 0;
-	while (cmd[i])
-	{
-		new = malloc(sizeof(char) * ft_strlen(cmd) - 1);
-		k = 0;
-		while (cmd[i])
-		{
-			if (cmd[i] != quote)
-			{
-				new[k] = cmd[i];
-				k++;
-			}
-			i++;
-		}
-		new[k] = 0;
-	}
-	free(cmd);
-	return (new);
-}
-
-char	*ft_quotes2(char *cmd, int *flag, char quote, int b)
-{
-	if (*flag == b)
-		*flag = 0;
+	if (cmd[0][0] != '\0' && ft_strncmp(cmd[0], "exit", 4) == 0 && \
+		ft_strlen (cmd[0]) == 4)
+		builtin_exit(mini);
+	else if (ft_strncmp(cmd[0], "env", 3) == 0 && \
+		ft_strlen(cmd[0]) == 3)
+		builtin_env(mini);
+	else if (ft_strncmp(cmd[0], "export", 6) == 0 && \
+		ft_strlen(cmd[0]) == 6)
+		builtin_export(mini, cmd);
+	else if (ft_strncmp(cmd[0], "echo", 4) == 0 && \
+		ft_strlen(cmd[0]) == 4)
+		builtin_echo(cmd);
+	else if (ft_strncmp(cmd[0], "cd", 2) == 0 && \
+		ft_strlen(cmd[0]) == 2)
+		builtin_cd(mini, cmd);
+	else if (ft_strncmp(cmd[0], "pwd", 3) == 0 && \
+		ft_strlen(cmd[0]) == 3)
+		builtin_pwd(mini);
+	else if (ft_strncmp(cmd[0], "unset", 5) == 0 && \
+		ft_strlen(cmd[0]) == 5)
+		builtin_unset(mini, cmd);
 	else
-		*flag = b;
-	return (ft_delete_quotes(cmd, quote));
+		ft_ext_cmd(mini, cmd);
+	//exit (0);
+	return (0);
 }
 
-char	**ft_quotes(char **cmd)
+void	ft_last_pipe(t_mini *mini, char **cmd, int *pid, int *tmp)
 {
-	int		i;
-	int		j;
-	int		flag;
-
-	i = 0;
-	flag = 0;
-	while (cmd[i])
+	*pid = fork();
+	if (*pid == 0)
 	{
-		j = 0;
-		while (cmd[i][j])
-		{
-			if (cmd[i][j] == '\'' && flag != 2)
-			{
-				cmd[i] = ft_quotes2(cmd[i], &flag, '\'', 1);
-			}
-			else if (cmd[i][j] == '\"' && flag != 1)
-			{
-				cmd[i] = ft_quotes2(cmd[i], &flag, '\"', 2);
-			}
-			j++;
-		}
-		i++;
+		dup2(*tmp, 0);
+		execute_commands(mini, cmd);
+		exit (0);
 	}
-	return (cmd);
+	else
+	{
+		if ((mini->cmds[1] == NULL && cmd[0][0] != '\0')\
+			 && (ft_strncmp(cmd[0], "exit", 4) == 0 && \
+			ft_strlen (cmd[0]) == 4))
+			builtin_exit(mini);
+		close (*tmp);
+		while (waitpid(-1, NULL, WUNTRACED) != -1)
+			;
+		*tmp = dup(0);
+	}
 }
 
-int	execute_commands(t_mini *mini)
+void	ft_every_pipe(t_mini *mini, char **cmd, int *pid, int *tmp)
+{
+	int		fd[2];
+	
+	pipe(fd);
+	*pid = fork();
+	if (*pid == 0)
+	{
+		dup2(fd[1], 1);
+		close (fd[1]);
+		close (fd[0]);
+		dup2(*tmp, 0);
+		execute_commands(mini, cmd);
+		exit (0);
+	}
+	else
+	{
+		close(*tmp);
+		close (fd[1]);
+		*tmp = fd[0];
+	}
+}
+
+int	ft_pipe(t_mini *mini)
 {
 	int		i;
-	//int		j;
 	char	**cmd;
+	int		pid;
+    int		tmp;
 
+	pid = 0;
+	tmp = dup(0);
 	i = 0;
 	while (mini->cmds[i])
 	{
 		cmd = ft_smart_split(mini->cmds[i], ' ');
 		cmd = ft_quotes(cmd);
-		if (cmd[0][0] != '\0' && ft_strncmp(cmd[0], "exit", 4) == 0 && \
-			ft_strlen (cmd[0]) == 4)
-			builtin_exit(mini);
-		else if (ft_strncmp(cmd[0], "env", 3) == 0 && \
-			ft_strlen(cmd[0]) == 3)
-			builtin_env(mini);
-		else if (ft_strncmp(cmd[0], "export", 6) == 0 && \
-			ft_strlen(cmd[0]) == 6)
-			builtin_export(mini, cmd);
-		else if (ft_strncmp(cmd[i], "echo", 4) == 0 && \
-			ft_strlen(cmd[i]) == 4)
-			builtin_echo(cmd);
-		else if (ft_strncmp(cmd[i], "cd", 2) == 0 && \
-			ft_strlen(cmd[i]) == 2)
-			builtin_cd(mini, cmd);
-		else if (ft_strncmp(cmd[i], "pwd", 3) == 0 && \
-			ft_strlen(cmd[i]) == 3)
-			builtin_pwd(mini);
-		else if (ft_strncmp(cmd[0], "unset", 5) == 0 && \
-			ft_strlen(cmd[0]) == 5)
-			builtin_unset(mini, cmd);
-		else
-			ft_ext_cmd(mini, cmd);
-		//j = -1;
-		//while (cmd[++j])
-		//	printf("%s\n", cmd[j]);
+		if (mini->cmds[i+1] == NULL)
+			ft_last_pipe(mini, cmd, &pid, &tmp);
+		else if (mini->cmds[i+1])
+			ft_every_pipe(mini, cmd, &pid, &tmp);
 		ft_free_matrix(cmd);
 		i++;
 	}
+	close (tmp);
 	return (1);
 }
 
@@ -134,7 +128,7 @@ void	get_command(t_mini *mini)
 			return ;
 		buff = expand_env_var(mini, buff);
 		mini->cmds = ft_smart_split(buff, '|');
-		if (!execute_commands(mini))
+		if (!ft_pipe(mini))
 			return ;
 		ft_free_matrix(mini->cmds);
 	}
