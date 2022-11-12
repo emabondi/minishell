@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:05:21 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/02 18:33:40 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/11 16:40:18 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,19 @@ int	ft_len_matrix(char **matrix)
 	return (i);
 }
 
-// char	**ft_env_copy(char **env)
-// {
-// 	char	**env_copy;
-// 	int		i;
+int	ft_isalnum_mod(char **cmd)
+{
+	int i;
 
-// 	i = 0;
-// 	env_copy = (char **)malloc(sizeof(char *) * ft_len_matrix(env) + 1);
-// 	while (env[i])
-// 	{
-// 		env_copy[i] = ft_strdup(env[i]);
-// 		i++;
-// 	}
-// 	env_copy[i] = NULL;
-// 	return (env_copy);
-// }
+	i = 0;
+	while (cmd[1][i])
+	{
+		if (cmd[1][i] == '=' || cmd[1][i] == '+')
+			break ;
+		return ((cmd[1][i] >= 'a' && cmd[1][i] <= 'z')
+		|| (cmd[1][i] >= 'A' && cmd[1][i] <= 'Z')
+		|| (cmd[1][i] >= '0' && cmd[1][i] <= '9') || (cmd[1][i] == '_'));
+		i++;
+	}
+	return (0);
+}

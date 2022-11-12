@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/10 15:44:08 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/11 15:51:21 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,14 @@ void	get_command(t_mini *mini);
 int		ft_check_quotes(char *str);
 int		ft_check_pipe(char *str);
 int		ft_check_pipe2(char *str);
+int		ft_isalnum_mod(char **cmd);
 
 //builtin
 char	**ft_smart_split(char *s, char c);
 void	builtin_exit(t_mini *mini);
 void	builtin_env(t_mini *mini);
 void	builtin_export(t_mini *mini, char **cmd);
+int		atleast_one_alpha(char *str);
 void	builtin_cd(t_mini *mini, char **cmd);
 
 //external_command

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/10 15:48:12 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/12 16:56:42 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 int	execute_commands(t_mini *mini, char **cmd)
 {
-
 	if (cmd[0][0] != '\0' && ft_strncmp(cmd[0], "exit", 4) == 0 && \
 		ft_strlen (cmd[0]) == 4)
 		builtin_exit(mini);
-	else if (ft_strncmp(cmd[0], "env", 3) == 0 && \
+	else if (ft_strncmp(cmd[0], "env\n", 4) == 0 && \
 		ft_strlen(cmd[0]) == 3)
 		builtin_env(mini);
 	else if (ft_strncmp(cmd[0], "export", 6) == 0 && \
@@ -117,6 +116,7 @@ void	get_command(t_mini *mini)
 	char	*buff;
 	int		p;
 	int		i;
+	char	**cmd;
 
 	i = -1;
 	p = mini->exit;
@@ -128,16 +128,19 @@ void	get_command(t_mini *mini)
 			return ;
 		buff = expand_env_var(mini, buff);
 		mini->cmds = ft_smart_split(buff, '|');
-		if (!ft_pipe(mini))
-			return ;
+		free(buff);
+		cmd = ft_smart_split(mini->cmds[0], ' '); // magari sistemare
+		if (mini->cmds[1] == NULL)
+			execute_commands(mini, cmd);
+		else
+			ft_pipe(mini);
 		ft_free_matrix(mini->cmds);
+		ft_free_matrix(cmd);
 	}
 	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
 	{
-		// ft_putend_fd("exit", 1);
 		mini->exit = 1;
 		free(buff);
 		return ;
 	}
-	free(buff);
 }

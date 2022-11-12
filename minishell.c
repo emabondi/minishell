@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/10/31 16:24:59 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/11 17:22:58 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ int	main(int argc, char *argv[], char **env)
 	}
 	ft_free_matrix(mini.env);
 	init_signals(1);
-	ft_putstr_fd("exit", 1);
+	ft_putstr_fd("exit\n", 1);
 	return (exit_status);
 }

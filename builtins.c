@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:24:38 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/02 18:35:24 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/11 16:03:36 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,15 @@ void	builtin_export(t_mini *mini, char **cmd)
 		ft_only_export(mini);
 		return ;
 	}
-	while (cmd[1][i])
+	if ((cmd[1][0] != '_' && !ft_isalpha(cmd[1][0])) || !ft_isalnum_mod(cmd))
 	{
-		if (cmd[1][i] == '=' || cmd[1][i] == '+')
-			break ;
-		if (!ft_isalnum(cmd[1][i]))
-		{
-			ft_putstr_fd("minisburo: export: '", 2);
-			ft_putstr_fd(cmd[1], 2);
-			ft_putendl_fd("': not a valid identifier", 2);
-			exit_status = 1;
-			return ;
-		}
-		i++;
+		ft_putstr_fd("minisburo: export: '", 2);
+		ft_putstr_fd(cmd[1], 2);
+		ft_putendl_fd("': not a valid identifier", 2);
+		exit_status = 1;
+		return ;
 	}
+
 	builtin_export2(mini, cmd);
 	exit_status = 0;
 }

@@ -1,3 +1,11 @@
+___________________________________________________________
+creare più mini dentro mini
+
+fixare *
+
+fare le redirection con heredoc
+___________________________________________________________
+
 
 pid
 
@@ -14,8 +22,6 @@ $? cambiare exit status
 }
 
 provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
-	!SEGFAULT!
-
 
 FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette
 	= trovare un modo per gestire le virgolette in generale
@@ -23,13 +29,15 @@ FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette
 FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette = trovare un modo per gestire le virgolette in generale
 FATTO--echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split = tokenizer?
 FATTO--se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
+FATTO--i nomi delle variabili di export devono contenere almeno una lettera e solo caratteri alfanumerici
 
 lo chiamiamo minisburo o minishell?
 
 echo -n -n -n ciao -n -n
-ad export e unset si possono passare piu variabili da creare/modificare
-i nomi delle variabili di export devono contenere almeno una lettera e solo caratteri alfanumerici
-export deve aggiornare le variabili gia esistenti anche con caratteri speciali es.][
 es var. a="ls -la" , $a esegue il comando
+
+ad export e unset si possono passare piu variabili da creare/modificare
+export deve aggiornare le variabili gia esistenti anche con caratteri speciali es.][
+
 
 alla fine pulire il makefile
