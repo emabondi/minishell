@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/11 15:51:21 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:35:35 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ int		ft_isalnum_mod(char **cmd);
 
 //builtin
 char	**ft_smart_split(char *s, char c);
-void	builtin_exit(t_mini *mini);
+void	builtin_exit(t_mini *mini, char **cmd);
+void	builtin_exit2(t_mini *mini, char **cmd);
+int		str_is_digit(char *str);
 void	builtin_env(t_mini *mini);
 void	builtin_export(t_mini *mini, char **cmd);
 int		atleast_one_alpha(char *str);

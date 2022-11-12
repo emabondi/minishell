@@ -15,11 +15,13 @@ tutti gli errori vanno stampati su STDERR	(fd 2)
 
 $$
 
-$? cambiare exit status
-{
-	exit 3 -> exit status = 3
-	exit l -> exit status = 255
-}
+FATTO-- $? cambiare exit status    da controllare
+		{
+			exit 3 -> exit status = 3
+			exit l -> exit status = 255
+			exit 3 3
+			exit 333
+		}
 
 provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
 

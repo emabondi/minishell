@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/12 16:56:42 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/12 18:32:56 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	execute_commands(t_mini *mini, char **cmd)
 {
 	if (cmd[0][0] != '\0' && ft_strncmp(cmd[0], "exit", 4) == 0 && \
 		ft_strlen (cmd[0]) == 4)
-		builtin_exit(mini);
+		builtin_exit(mini, cmd);
 	else if (ft_strncmp(cmd[0], "env\n", 4) == 0 && \
 		ft_strlen(cmd[0]) == 3)
 		builtin_env(mini);
@@ -55,7 +55,7 @@ void	ft_last_pipe(t_mini *mini, char **cmd, int *pid, int *tmp)
 		if ((mini->cmds[1] == NULL && cmd[0][0] != '\0')\
 			 && (ft_strncmp(cmd[0], "exit", 4) == 0 && \
 			ft_strlen (cmd[0]) == 4))
-			builtin_exit(mini);
+			builtin_exit(mini, cmd);
 		close (*tmp);
 		while (waitpid(-1, NULL, WUNTRACED) != -1)
 			;
@@ -121,6 +121,14 @@ void	get_command(t_mini *mini)
 	i = -1;
 	p = mini->exit;
 	buff = readline("minisburo:");
+	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
+	{
+		ft_putstr_fd("\e[A\e[K", 1);
+		ft_putstr_fd("minisburo: exit\n", 1);
+		mini->exit = 1;
+		free(buff);
+		return ;
+	}
 	if (buff != NULL && ft_strlen(buff) > 0)
 	{
 		add_history(buff);
@@ -136,11 +144,5 @@ void	get_command(t_mini *mini)
 			ft_pipe(mini);
 		ft_free_matrix(mini->cmds);
 		ft_free_matrix(cmd);
-	}
-	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
-	{
-		mini->exit = 1;
-		free(buff);
-		return ;
 	}
 }

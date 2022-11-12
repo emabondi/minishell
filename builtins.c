@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:24:38 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/11 16:03:36 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:34:38 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	builtin_exit(t_mini *mini)
-{
-	// ft_putendl_fd("exit", 1);
-	mini->exit = 1;
-	return ;
-}
+
 
 void	builtin_env(t_mini *mini)
 {
