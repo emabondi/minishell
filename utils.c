@@ -39,12 +39,15 @@ int	ft_isalnum_mod(char **cmd)
 	i = 0;
 	while (cmd[1][i])
 	{
+		// printf("%c\n", cmd[1][i]);
 		if (cmd[1][i] == '=' || cmd[1][i] == '+')
 			break ;
-		return ((cmd[1][i] >= 'a' && cmd[1][i] <= 'z')
+		if ((cmd[1][i] >= 'a' && cmd[1][i] <= 'z')
 		|| (cmd[1][i] >= 'A' && cmd[1][i] <= 'Z')
-		|| (cmd[1][i] >= '0' && cmd[1][i] <= '9') || (cmd[1][i] == '_'));
-		i++;
+		|| (cmd[1][i] >= '0' && cmd[1][i] <= '9') || cmd[1][i] == '_')
+			i++;
+		else
+			return(1);
 	}
 	return (0);
 }

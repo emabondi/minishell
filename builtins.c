@@ -44,23 +44,23 @@ void	builtin_pwd(t_mini *mini)
 	(void)mini;
 }
 
-void	builtin_export2(t_mini *mini, char **cmd)
+void	builtin_export2(t_mini *mini, char *cmd)
 {
 	char	*key;
 
-	if (ft_strchr(cmd[1], '=') && *(ft_strchr(cmd[1], '=') - 1) == '+')
+	if (ft_strchr(cmd, '=') && *(ft_strchr(cmd, '=') - 1) == '+')
 	{
-		key = ft_substr(cmd[1], 0, ft_strchr(cmd[1], '+') - cmd[1]);
-		ft_export_two(mini, key, ft_strchr(cmd[1], '=') + 1, 1);
+		key = ft_substr(cmd, 0, ft_strchr(cmd, '+') - cmd);
+		ft_export_two(mini, key, ft_strchr(cmd, '=') + 1, 1);
 	}
-	else if (ft_strchr(cmd[1], '='))
+	else if (ft_strchr(cmd, '='))
 	{
-		key = ft_substr(cmd[1], 0, ft_strchr(cmd[1], '=') - cmd[1]);
-		ft_export_two(mini, key, ft_strchr(cmd[1], '=') + 1, 2);
+		key = ft_substr(cmd, 0, ft_strchr(cmd, '=') - cmd);
+		ft_export_two(mini, key, ft_strchr(cmd, '=') + 1, 2);
 	}
 	else
 	{
-		key = ft_strdup(cmd[1]);
+		key = ft_strdup(cmd);
 		ft_export_two(mini, key, NULL, 3);
 	}
 	free(key);
@@ -70,21 +70,24 @@ void	builtin_export(t_mini *mini, char **cmd)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (!cmd[1])
 	{
 		ft_only_export(mini);
 		return ;
 	}
-	if ((cmd[1][0] != '_' && !ft_isalpha(cmd[1][0])) || !ft_isalnum_mod(cmd))
+	while(cmd[i])
 	{
-		ft_putstr_fd("minisburo: export: '", 2);
-		ft_putstr_fd(cmd[1], 2);
-		ft_putendl_fd("': not a valid identifier", 2);
-		exit_status = 1;
-		return ;
+		if ((cmd[i][0] != '_' && !ft_isalpha(cmd[i][0])) || ft_isalnum_mod(cmd))
+		{
+			ft_putstr_fd("minisburo: export: '", 2);
+			ft_putstr_fd(cmd[1], 2);
+			ft_putendl_fd("': not a valid identifier", 2);
+			exit_status = 1;
+			return ;
+		}
+		builtin_export2(mini, cmd[i]);
+		i++;
 	}
-
-	builtin_export2(mini, cmd);
 	exit_status = 0;
 }

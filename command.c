@@ -111,15 +111,19 @@ int	ft_pipe(t_mini *mini)
 	return (1);
 }
 
+// void	ft_redirection(t_mini *mini, char **cmd)
+// {
+// 	int i;
+
+// 	i = -1;
+// 	i = ft_find_red()
+// }
+
 void	get_command(t_mini *mini)
 {
 	char	*buff;
-	int		p;
-	int		i;
 	char	**cmd;
 
-	i = -1;
-	p = mini->exit;
 	buff = readline("minisburo:");
 	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
 	{
@@ -138,8 +142,13 @@ void	get_command(t_mini *mini)
 		mini->cmds = ft_smart_split(buff, '|');
 		free(buff);
 		cmd = ft_smart_split(mini->cmds[0], ' '); // magari sistemare
+		// ft_redirection(mini, cmd);
 		if (mini->cmds[1] == NULL)
+		{
+			// printf("%s\n %s\n %s\n", cmd[0], cmd[1], cmd[2]);
+			cmd = ft_quotes(cmd);
 			execute_commands(mini, cmd);
+		}
 		else
 			ft_pipe(mini);
 		ft_free_matrix(mini->cmds);

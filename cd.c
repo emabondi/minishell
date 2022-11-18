@@ -87,7 +87,7 @@ void	builtin_echo(char **cmd)
 
 	flag = 1;
 	i = 1;
-	if (cmd[i] && !ft_strncmp(cmd[1], "-n", 2))
+	while (cmd[i] && !ft_strncmp(cmd[i], "-n", 2))
 	{
 		flag = 0;
 		i++;
