@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/12 18:32:56 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/18 17:42:41 by atarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,13 +140,15 @@ void	get_command(t_mini *mini)
 			return ;
 		buff = expand_env_var(mini, buff);
 		mini->cmds = ft_smart_split(buff, '|');
+		ft_redirection(mini);
+		//printf("%s", mini->cmds[0]);
 		free(buff);
 		cmd = ft_smart_split(mini->cmds[0], ' '); // magari sistemare
-		// ft_redirection(mini, cmd);
 		if (mini->cmds[1] == NULL)
 		{
-			// printf("%s\n %s\n %s\n", cmd[0], cmd[1], cmd[2]);
+			//printf("%s\n %s\n %s\n", cmd[0], cmd[1], cmd[2]);
 			cmd = ft_quotes(cmd);
+			//printf("%s\n %s\n %s\n", cmd[0], cmd[1], cmd[2]);
 			execute_commands(mini, cmd);
 		}
 		else
