@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/18 17:42:41 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/11/19 17:07:52 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	ft_pipe(t_mini *mini)
 	i = 0;
 	while (mini->cmds[i])
 	{
+		ft_redirection(mini->cmds[i]);
 		cmd = ft_smart_split(mini->cmds[i], ' ');
 		cmd = ft_quotes(cmd);
 		if (mini->cmds[i+1] == NULL)
@@ -140,20 +141,20 @@ void	get_command(t_mini *mini)
 			return ;
 		buff = expand_env_var(mini, buff);
 		mini->cmds = ft_smart_split(buff, '|');
-		ft_redirection(mini);
 		//printf("%s", mini->cmds[0]);
 		free(buff);
-		cmd = ft_smart_split(mini->cmds[0], ' '); // magari sistemare
 		if (mini->cmds[1] == NULL)
 		{
+			ft_redirection(mini->cmds[0]);
+			cmd = ft_smart_split(mini->cmds[0], ' '); // magari sistemare
 			//printf("%s\n %s\n %s\n", cmd[0], cmd[1], cmd[2]);
 			cmd = ft_quotes(cmd);
 			//printf("%s\n %s\n %s\n", cmd[0], cmd[1], cmd[2]);
 			execute_commands(mini, cmd);
+			ft_free_matrix(cmd);
 		}
 		else
 			ft_pipe(mini);
 		ft_free_matrix(mini->cmds);
-		ft_free_matrix(cmd);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/08 12:01:22 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/21 14:12:26 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd)
 
 	ret = 1;
 	pid = fork();
+	// cmd[1] = NULL;
 	if (pid == 0)
 	{
 		if (ft_strchr(path, '/') != NULL)

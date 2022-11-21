@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 12:40:13 by ebondi            #+#    #+#             */
-/*   Updated: 2022/01/18 19:02:05 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/21 13:03:04 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	k = ft_strlen(s1);
 	while (ft_checkset(s1[k -1], (char *)set) && k > c)
 		k--;
-	printf("%s\n", ft_substr((char *)s1, c, k - c));
 	return (ft_substr((char *)s1, c, k - c));
 
 }

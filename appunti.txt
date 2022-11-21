@@ -1,3 +1,9 @@
+per redirection modificare cmd in modo che abbia solo un comando da eseguire
+resettare fd dopo execve
+se apertura file da errore non eseguire nulla (fd=-1)
+
+
+
 ___________________________________________________________
 es var. a="ls -la" , $a esegue il comando
 export con argomento tra virgolette mette le doppie virgolette
@@ -9,6 +15,8 @@ ___________________________________________________________
 pid
 
 pipe
+
+fare syntax error delle redirection
 
 tutti gli errori vanno stampati su STDERR	(fd 2)
 
