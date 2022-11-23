@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/19 17:02:28 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/22 16:26:05 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ char	*ft_quotes2(char *cmd, int *flag, char quote, int b);
 char	*ft_delete_quotes(char	*cmd, char quote);
 
 //redirection
-int	ft_redirection(char *cmd);
+int		ft_redirection(t_mini *mini, int n);
+
+char	*get_next_line(int fd);
 
 #endif

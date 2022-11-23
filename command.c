@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/19 17:07:52 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/23 16:42:48 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	execute_commands(t_mini *mini, char **cmd)
 {
-	if (cmd[0][0] != '\0' && ft_strncmp(cmd[0], "exit", 4) == 0 && \
+	if (cmd[0] == NULL)
+		return (0);
+	else if (cmd[0][0] != '\0' && ft_strncmp(cmd[0], "exit", 4) == 0 && \
 		ft_strlen (cmd[0]) == 4)
 		builtin_exit(mini, cmd);
 	else if (ft_strncmp(cmd[0], "env\n", 4) == 0 && \
@@ -92,19 +94,24 @@ int	ft_pipe(t_mini *mini)
 	char	**cmd;
 	int		pid;
     int		tmp;
+	int		std_in_out[2];
 
 	pid = 0;
 	tmp = dup(0);
 	i = 0;
 	while (mini->cmds[i])
 	{
-		ft_redirection(mini->cmds[i]);
+		std_in_out[0] = dup(0);
+		std_in_out[1] = dup(1);
+		ft_redirection(mini, i);
 		cmd = ft_smart_split(mini->cmds[i], ' ');
 		cmd = ft_quotes(cmd);
 		if (mini->cmds[i+1] == NULL)
 			ft_last_pipe(mini, cmd, &pid, &tmp);
 		else if (mini->cmds[i+1])
 			ft_every_pipe(mini, cmd, &pid, &tmp);
+		dup2(std_in_out[1], 1);
+		dup2(std_in_out[0], 0);
 		ft_free_matrix(cmd);
 		i++;
 	}
@@ -124,6 +131,7 @@ void	get_command(t_mini *mini)
 {
 	char	*buff;
 	char	**cmd;
+	int		std_in_out[2];
 
 	buff = readline("minisburo:");
 	if (buff == NULL /*|| (buff[0] != '\0' && (!ft_strncmp(buff, "exit", 4) && ft_strlen(buff) == 4))*/)
@@ -145,12 +153,17 @@ void	get_command(t_mini *mini)
 		free(buff);
 		if (mini->cmds[1] == NULL)
 		{
-			ft_redirection(mini->cmds[0]);
+			std_in_out[0] = dup(0);
+			std_in_out[1] = dup(1);
+			ft_redirection(mini, 0);
+			//ft_putstr_fd(mini->cmds[0], 1);
 			cmd = ft_smart_split(mini->cmds[0], ' '); // magari sistemare
 			//printf("%s\n %s\n %s\n", cmd[0], cmd[1], cmd[2]);
 			cmd = ft_quotes(cmd);
 			//printf("%s\n %s\n %s\n", cmd[0], cmd[1], cmd[2]);
 			execute_commands(mini, cmd);
+			dup2(std_in_out[0], 0);
+			dup2(std_in_out[1], 1);
 			ft_free_matrix(cmd);
 		}
 		else
