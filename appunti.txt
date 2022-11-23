@@ -1,8 +1,8 @@
 per redirection modificare cmd in modo che abbia solo un comando da eseguire
 resettare fd dopo execve
 se apertura file da errore non eseguire nulla (fd=-1)
-
-
+multi redirection
+cat < Makefile | grep "A" | grep "NAME" | wc -l
 
 ___________________________________________________________
 es var. a="ls -la" , $a esegue il comando

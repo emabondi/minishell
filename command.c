@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/23 16:42:48 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/23 20:01:02 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ int	ft_pipe(t_mini *mini)
 		ft_redirection(mini, i);
 		cmd = ft_smart_split(mini->cmds[i], ' ');
 		cmd = ft_quotes(cmd);
-		if (mini->cmds[i+1] == NULL)
+		if (mini->cmds[i + 1] == NULL)
 			ft_last_pipe(mini, cmd, &pid, &tmp);
-		else if (mini->cmds[i+1])
+		else if (mini->cmds[i + 1])
 			ft_every_pipe(mini, cmd, &pid, &tmp);
 		dup2(std_in_out[1], 1);
 		dup2(std_in_out[0], 0);
