@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:24:09 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/23 19:39:34 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/29 10:37:21 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,11 @@ char	*ft_cut_sub(char *src, int start, int start2)
 	head = (char *) malloc (sizeof(char) * (start + 1));
 	ft_strlcpy(head, src, start);
 	tail = ft_strdup(src + start2);
+	if (start == 0)
+	{
+		free(head);
+		return (tail);
+	}
 	new_cmd = ft_strjoin(head, tail);
 	free(head);
 	free(tail);
@@ -162,7 +167,7 @@ char	*ft_rd_arg(char *cmd, int *j, int *z)
 	return (sub);
 }
 
-void	ft_redirection2(t_mini *mini, int start, int n)
+char *ft_redirection2(char *cmd, int start)
 {
 	int		j;
 	int		z;
@@ -171,45 +176,56 @@ void	ft_redirection2(t_mini *mini, int start, int n)
 
 	j = start;
 	z = 0;
-	sub = ft_rd_arg(mini->cmds[n], &j, &z);
-	new_cmd = ft_cut_sub(mini->cmds[n], start, j + z);
-	if (mini->cmds[n][start] == '<' && (mini->cmds[n][start + 1] != '\0' && mini->cmds[n][start + 1] != '<'))
+	sub = ft_rd_arg(cmd, &j, &z);
+	new_cmd = ft_cut_sub(cmd, start, j + z);
+	if (cmd[start] == '<' && (cmd[start + 1] != '\0' && cmd[start + 1] != '<'))
 		ft_input_rd(sub);
-	else if ((mini->cmds[n][start] == '<' && (mini->cmds[n][start + 1] != '\0' && mini->cmds[n][start + 1] == '<')))
+	else if ((cmd[start] == '<' && (cmd[start + 1] != '\0' && cmd[start + 1] == '<')))
 	 	ft_heredoc(sub);
-	else if (mini->cmds[n][start] == '>' && (mini->cmds[n][start + 1] != '\0' && mini->cmds[n][start + 1] != '>'))
+	else if (cmd[start] == '>' && (cmd[start + 1] != '\0' && cmd[start + 1] != '>'))
 		ft_output_rd(sub, 0);
-	else if (mini->cmds[n][start] == '>' && (mini->cmds[n][start + 1] != '\0' && mini->cmds[n][start + 1] == '>'))
+	else if (cmd[start] == '>' && (cmd[start + 1] != '\0' && cmd[start + 1] == '>'))
 		ft_output_rd(sub, 1);
 	free (sub);
-	free (mini->cmds[n]);
-	mini->cmds[n] = new_cmd;
+	free (cmd);
+	return (new_cmd);
 }
 
-int	ft_redirection(t_mini *mini, int n)
+char *ft_redirection(char *cmd)
 {
 	int		i;
+	char	*new_cmd;
 
 	i = 0;
-	while (mini->cmds[n][i])
+	new_cmd = ft_strdup(cmd);
+	while (new_cmd[i])
 	{
-		if (mini->cmds[n][i] == '\"')
+		if (new_cmd[i] == '\"')
 		{
 			i++;
-			while (mini->cmds[n][i] != '\"')
+			while (new_cmd[i] != '\"')
 				i++;
 			i++;
 		}
-		if (mini->cmds[n][i] == '\'')
+		if (new_cmd[i] == '\'')
 		{
 			i++;
-			while (mini->cmds[n][i] != '\'')
+			while (new_cmd[i] != '\'')
 				i++;
 			i++;
 		}
-		if (mini->cmds[n][i] == '<' || mini->cmds[n][i] == '>')
-			ft_redirection2(mini, i, n);
-		i++;
+		if (new_cmd[i] == '<' || new_cmd[i] == '>')
+		{
+			new_cmd = ft_redirection2(new_cmd, i);
+			//ft_putstr_fd("\nnew_cmd:", 1);
+			//ft_putstr_fd(new_cmd, 1);
+		}
+		else
+			i++;
 	}
-	return (0);
+	free (cmd);
+//	ft_putstr_fd("\ncomando tagliato:", 1);
+//	ft_putstr_fd(new_cmd, 1);
+//	ft_putstr_fd("\n", 1);
+	return (new_cmd);
 }

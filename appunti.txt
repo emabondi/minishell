@@ -1,11 +1,12 @@
 per redirection modificare cmd in modo che abbia solo un comando da eseguire
 resettare fd dopo execve
 se apertura file da errore non eseguire nulla (fd=-1)
-multi redirection
-cat < Makefile | grep "A" | grep "NAME" | wc -l
+FATTO--multi redirection --magari provare
+FATTO--< prova  < prova "cat < prova" cat -> non viene tagliato bene
+FATTO--cat < Makefile | grep "A" | grep "NAME" | wc -l
 
 ___________________________________________________________
-es var. a="ls -la" , $a esegue il comando
+FATTO--es var. a="ls -la" , $a esegue il comando
 export con argomento tra virgolette mette le doppie virgolette
 
 !!!!!!!!!!!!!!!!fare le redirection con heredoc!!!!!!!!!!!!!!
@@ -24,11 +25,10 @@ $$
 
 lo chiamiamo minisburo o minishell?
 
-----------------TESTATI-------------------
-FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette = trovare un modo per gestire le virgolette in generale
+----------------TESTATI-------------------DA RITESTARE
+echo '$HOME' && "$HOME" non devono stampare le virgolette = trovare un modo per gestire le virgolette in generale
 FATTO--provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
-FATTO--echo '$HOME' && "$HOME" non devono stampare le virgolette = trovare un modo per gestire le virgolette in generale
-FATTO--echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split = tokenizer?
+FATTO--echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split
 FATTO--se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
 
 ---------------DA TESTARE-----------------
@@ -44,3 +44,7 @@ FATTO-- $? cambiare exit status    da controllare
 			exit 3 3
 			exit 333
 		}
+
+echo "$HOME" '$HOME' "'$HOME'" '"$HOME"' ->non gestisce bene le virgolette
+cat | >>fine ->esplode
+a volte mi sono comparsi root leaks (peró bohh)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/22 16:26:05 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/11/29 12:19:28 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	builtin_echo(char **cmd);
 
 //command
 void	get_command(t_mini *mini);
+int		execute_commands(t_mini *mini, char *cmd_i);
 
 //syntax check
 int		ft_check_quotes(char *str);
@@ -89,7 +90,9 @@ int		ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd);
 int		ft_execve_error(char *path);
 
 //pipe
-void	ft_last_pipe(t_mini *mini, char **cmd, int *pid, int *tmp);
+int		ft_pipe(t_mini *mini);
+void	ft_every_pipe(t_mini *mini, char *cmd_i, int *pid, int *tmp);
+void	ft_last_pipe(t_mini *mini, char *cmd_i, int *pid, int *tmp);
 
 //quotes
 char	**ft_quotes(char **cmd);
@@ -97,7 +100,8 @@ char	*ft_quotes2(char *cmd, int *flag, char quote, int b);
 char	*ft_delete_quotes(char	*cmd, char quote);
 
 //redirection
-int		ft_redirection(t_mini *mini, int n);
+char	*ft_redirection(char *cmd);
+char	*ft_redirection2(char *cmd, int start);
 
 char	*get_next_line(int fd);
 
