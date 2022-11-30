@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/29 12:19:28 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/30 17:19:08 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,5 @@ char	*ft_delete_quotes(char	*cmd, char quote);
 //redirection
 char	*ft_redirection(char *cmd);
 char	*ft_redirection2(char *cmd, int start);
-
-char	*get_next_line(int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:24:09 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/29 10:37:21 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/11/30 17:16:52 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ static void	ft_heredocchiamo(char *sub, int *fd)
 
 	while (1)
 	{
-		write(1, ">", 1);
-		line = get_next_line(0);
+		//write(1, ">", 1);
+		//line = get_next_line(0);
+		line = readline("> ");
+		//ft_putnbr_fd(ft_strlen(line), 1);
 		if (ft_strncmp(sub, line, ft_strlen(sub)) == 0 \
-			&& ft_strlen(sub) == ft_strlen(line) - 1)
+			&& ft_strlen(sub) == ft_strlen(line))
 		{
 			free (line);
 			exit (0);

@@ -17,8 +17,6 @@ pid
 
 pipe
 
-fare syntax error delle redirection
-
 tutti gli errori vanno stampati su STDERR	(fd 2)
 
 $$
@@ -45,6 +43,6 @@ FATTO-- $? cambiare exit status    da controllare
 			exit 333
 		}
 
+fare syntax error delle redirection
 echo "$HOME" '$HOME' "'$HOME'" '"$HOME"' ->non gestisce bene le virgolette
-cat | >>fine ->esplode
-a volte mi sono comparsi root leaks (peró bohh)
+cat | <<fine ->esplode  -> sistemato, tolto gnl
