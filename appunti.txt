@@ -43,6 +43,6 @@ FATTO-- $? cambiare exit status    da controllare
 			exit 333
 		}
 
-fare syntax error delle redirection
+FATTO--fare syntax error delle redirection --magari testare meglio pls e checkare leaks
 echo "$HOME" '$HOME' "'$HOME'" '"$HOME"' ->non gestisce bene le virgolette
-cat | <<fine ->esplode  -> sistemato, tolto gnl
+cat | <<fine ->esplode  -> sistemato ma lagga abbestia, tolto gnl

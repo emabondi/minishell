@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/30 16:26:25 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/01 20:03:42 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	get_command(t_mini *mini)
 	if (buff != NULL && ft_strlen(buff) > 0)
 	{
 		add_history(buff);
-		if (!ft_check_pipe(buff) || !ft_check_quotes(buff))
+		if (!ft_check_pipe(buff) || !ft_check_quotes(buff) || !ft_check_redi(buff))
 			return ;
 		buff = expand_env_var(mini, buff);
 		mini->cmds = ft_smart_split(buff, '|');

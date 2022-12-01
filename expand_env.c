@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/29 12:14:19 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/01 16:55:27 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ int	confront_env_var(char *env_line, char *str)
 char	*ft_get_env_var(t_mini *mini, char *str)
 {
 	int	i;
-	int	len_str;
 
 	i = 0;
 	//while (*str != '$')
 	//	str++;
 	str++;
-	len_str = ft_strlen(str);
 	while (mini->env[i])
 	{
 		if (confront_env_var(mini->env[i], str) &&\

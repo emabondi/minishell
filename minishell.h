@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/30 17:19:08 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/01 20:02:31 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int		ft_check_quotes(char *str);
 int		ft_check_pipe(char *str);
 int		ft_check_pipe2(char *str);
 int		ft_isalnum_mod(char **cmd);
+int		ft_check_redi(char *str);
 
 //builtin
 char	**ft_smart_split(char *s, char c);
