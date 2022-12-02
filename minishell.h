@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/01 20:02:31 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/02 15:48:29 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char	*expand_env_var3(char *initial_str, char *var);
 char	*ft_whats_exit_status(char *str, int i);
 
 int		ft_isspace(int c);
+int		ft_parse_error(int token);
 int		confront_env_var(char *env_line, char *str);
 char	**ft_export(t_mini *mini);
 void	ft_swap(t_mini *mini, int o, int i);
@@ -65,7 +66,8 @@ void	builtin_echo(char **cmd);
 
 //command
 void	get_command(t_mini *mini);
-int		execute_commands(t_mini *mini, char *cmd_i);
+void	execute_commands(t_mini *mini, char *cmd_i);
+void	execute_commands2(t_mini *mini, char **cmd);
 
 //syntax check
 int		ft_check_quotes(char *str);
@@ -85,8 +87,7 @@ int		atleast_one_alpha(char *str);
 void	builtin_cd(t_mini *mini, char **cmd);
 
 //external_command
-int		ft_ext_cmd(t_mini *mini, char **cmd);
-char	*ft_get_path(t_mini *mini);
+void	ft_ext_cmd(t_mini *mini, char **cmd);
 int		ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd);
 int		ft_execve_error(char *path);
 

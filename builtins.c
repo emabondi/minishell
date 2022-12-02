@@ -6,13 +6,11 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:24:38 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/12 19:34:38 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/02 16:33:56 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-
 
 void	builtin_env(t_mini *mini)
 {

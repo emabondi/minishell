@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:30:10 by atarsi            #+#    #+#             */
-/*   Updated: 2022/12/01 20:15:01 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/02 15:50:51 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_check_pipe(char *str)
 		i++;
 	if (str[i] == '|' || !ft_check_pipe2(str))
 	{
-		free(str);
 		ft_putstr_fd("minisburo: syntax error near unexpected token `|'\n", 2);
 		exit_status = 258;
 		return (0);
@@ -68,13 +67,10 @@ int	ft_check_quotes(char *str)
 	}
 	if (dq % 2 != 0 || q % 2 != 0)
 	{
-		free(str);
 		if (dq % 2 != 0)
-			ft_putstr_fd("minisburo: syntax error \
-				near unexpected token `\"'\n", 2);
+			ft_parse_error('\"');
 		else
-			ft_putstr_fd("minisburo: syntax error \
-				near unexpected token `\''\n", 2);
+			ft_parse_error('\'');
 		exit_status = 258;
 		return (0);
 	}

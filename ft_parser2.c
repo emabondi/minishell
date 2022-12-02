@@ -12,9 +12,8 @@
 
 #include "minishell.h"
 
-int	ft_parse_error(char *str, int token)
+int	ft_parse_error(int token)
 {
-	free(str);
 	ft_putstr_fd("minisburo: syntax error near unexpected token `", 2);
 	write (2, &token, 1);
 	ft_putstr_fd("'\n", 2);
@@ -29,11 +28,11 @@ int	ft_check_redi2(char *str, int *i, int type)
 	else if (str[*i] == type)
 		(*i) += 1;
 	else
-		return (ft_parse_error(str, type));
+		return (ft_parse_error(type));
 	while (str[*i] == ' ')
 		(*i)++;
 	if (str[*i] == '\0' || !ft_isalnum(str[*i]))
-		return (ft_parse_error(str, type));
+		return (ft_parse_error(type));
 	return (1);
 }
 

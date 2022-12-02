@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/21 14:12:26 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:04:02 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_execve_error(char *path)
 
 	fd = open(path, O_WRONLY);
 	folder = opendir(path);
-	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd("minisburo: ", 2);
 	ft_putstr_fd(path, 2);
 	if (ft_strchr(path, '/') == NULL)
 		ft_putendl_fd(": command not found", 2);
@@ -71,6 +71,7 @@ char	*ft_get_path(t_mini *mini)
 	char	*path;
 
 	i = 0;
+	path = NULL;
 	while (mini->env[i])
 	{
 		if (ft_strncmp(mini->env[i], "PATH=", 5) == 0)
@@ -100,13 +101,20 @@ int	ft_check_access(char **pos_path, char **cmd, int *i)
 	return (0);
 }
 
-int	ft_find_path(t_mini *mini, char **cmd)
+void	ft_ext_cmd(t_mini *mini, char **cmd)
 {
 	char	*path;
 	char	**pos_path;
 	int		i;
 
 	path = ft_get_path(mini);
+	if (path == NULL)
+	{
+		ft_putstr_fd("minisburo: ", 2);
+		ft_putstr_fd(cmd[0], 2);
+		ft_putendl_fd(": command not found", 2);
+		return ;
+	}
 	pos_path = ft_split(path, ':');
 	i = 0;
 	if (ft_check_access(pos_path, cmd, &i))
@@ -115,17 +123,4 @@ int	ft_find_path(t_mini *mini, char **cmd)
 		ft_forkamelo_tutto(mini, cmd[0], cmd);
 	free (path);
 	ft_free_matrix(pos_path);
-	return (0);
-}
-
-int	ft_ext_cmd(t_mini *mini, char **cmd)
-{
-/*
-	if (strchr())
-		gestire ./
-	else
-*/	
-	(void)mini;
-	ft_find_path(mini, cmd);
-	return (0);
 }
