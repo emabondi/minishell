@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/02 15:48:29 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:56:15 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	builtin_exit2(t_mini *mini, char **cmd);
 int		str_is_digit(char *str);
 void	builtin_env(t_mini *mini);
 void	builtin_export(t_mini *mini, char **cmd);
-int		atleast_one_alpha(char *str);
 void	builtin_cd(t_mini *mini, char **cmd);
 
 //external_command

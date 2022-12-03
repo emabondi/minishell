@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:34:26 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/02 16:43:14 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/03 17:25:24 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,16 @@ void	builtin_cd(t_mini *mini, char **cmd)
 	}
 }
 
+int	all_str_n(char *str)
+{
+	int i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] != 'n')
+			return (0);
+	return (1);
+}
 void	builtin_echo(char **cmd)
 {
 	int	i;
@@ -98,7 +108,7 @@ void	builtin_echo(char **cmd)
 
 	flag = 1;
 	i = 1;
-	while (cmd[i] && !ft_strncmp(cmd[i], "-n", 2) && (cmd[i][2] != '-'))
+	while (cmd[i] && !ft_strncmp(cmd[i], "-n", 2) && all_str_n(cmd[i] + 1))
 	{
 		flag = 0;
 		i++;

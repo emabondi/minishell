@@ -48,4 +48,4 @@ cat | <<fine ->esplode  -> sistemato ma lagga abbestia, tolto gnl
 
 echo "$HOME" '$HOME' "'$HOME'" '"$HOME"' ->non gestisce bene le virgolette
 FATTO--sistemare echo -n
-sistemare syntax error vari, se ci sono (singola pipe)
+FATTO--sistemare syntax error vari, se ci sono (singola pipe)
