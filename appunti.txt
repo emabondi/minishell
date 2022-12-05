@@ -46,6 +46,8 @@ FATTO-- $? cambiare exit status    da controllare
 FATTO--fare syntax error delle redirection --magari testare meglio pls e checkare leaks
 cat | <<fine ->esplode  -> sistemato ma lagga abbestia, tolto gnl
 
-echo "$HOME" '$HOME' "'$HOME'" '"$HOME"' ->non gestisce bene le virgolette
+FATTO--echo "$HOME" '$HOME' "'$HOME'" '"$HOME"' ->non gestisce bene le virgolette
 FATTO--sistemare echo -n
 FATTO--sistemare syntax error vari, se ci sono (singola pipe)
+crtl C non funziona bene quando c'é un processo figlio aperto es.-> cat
+export non aggiorna bene le env var - comando che ha provato giacomo (export a=4 b v d e=ls a=5)

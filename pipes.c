@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 12:15:21 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/02 12:48:12 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/05 11:14:32 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	ft_every_pipe(t_mini *mini, char *cmd_i, int *pid, int *tmp)
 {
 	int		fd[2];
 	char	*cmd;
-	//char 	*gnl;
-	//int		file;
 
 	pipe(fd);
 	*pid = fork();
@@ -76,7 +74,7 @@ int	ft_pipe(t_mini *mini)
 {
 	int		i;
 	int		pid;
-    int		tmp;
+	int		tmp;
 	int		std_in_out[2];
 
 	pid = 0;

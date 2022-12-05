@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/02 15:27:43 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/05 15:36:49 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void	execute_commands(t_mini *mini, char *cmd_i)
 	ft_free_matrix(cmd);
 }
 
-void	get_command2(t_mini *mini, char *buff)
+char	*get_command2(t_mini *mini, char *buff)
 {
 	int		std_in_out[2];
 
 	add_history(buff);
 	if (!ft_check_pipe(buff) || !ft_check_quotes(buff) || !ft_check_redi(buff))
-		return ;
+		return (buff);
 	buff = expand_env_var(mini, buff);
 	mini->cmds = ft_smart_split(buff, '|');
 	if (mini->cmds[1] == NULL)
@@ -73,6 +73,7 @@ void	get_command2(t_mini *mini, char *buff)
 	else
 		ft_pipe(mini);
 	ft_free_matrix(mini->cmds);
+	return (buff);
 }
 
 void	get_command(t_mini *mini)
@@ -89,6 +90,6 @@ void	get_command(t_mini *mini)
 		return ;
 	}
 	if (buff != NULL && ft_strlen(buff) > 0)
-		get_command2(mini, buff);
+		buff = get_command2(mini, buff);
 	free(buff);
 }

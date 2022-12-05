@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/12/02 15:04:02 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/05 17:17:49 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,16 @@ void	ft_ext_cmd(t_mini *mini, char **cmd)
 	path = ft_get_path(mini);
 	if (path == NULL)
 	{
-		ft_putstr_fd("minisburo: ", 2);
-		ft_putstr_fd(cmd[0], 2);
-		ft_putendl_fd(": command not found", 2);
+		ft_forkamelo_tutto(mini, cmd[0], cmd);
 		return ;
 	}
+	//if (path == NULL)
+	//{
+	//	ft_putstr_fd("minisburo: ", 2);
+	//	ft_putstr_fd(cmd[0], 2);
+	//	ft_putendl_fd(": command not found", 2);
+	//	return ;
+	//}
 	pos_path = ft_split(path, ':');
 	i = 0;
 	if (ft_check_access(pos_path, cmd, &i))
