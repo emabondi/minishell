@@ -13,10 +13,6 @@ export con argomento tra virgolette mette le doppie virgolette
 alla fine pulire il makefile
 ___________________________________________________________
 
-pid
-
-pipe
-
 tutti gli errori vanno stampati su STDERR	(fd 2)
 
 $$
@@ -25,7 +21,6 @@ lo chiamiamo minisburo o minishell?
 
 ----------------TESTATI-------------------DA RITESTARE
 echo '$HOME' && "$HOME" non devono stampare le virgolette = trovare un modo per gestire le virgolette in generale
-FATTO--provare: gdsghs | gfsbgsb tees TETS| teesghghte sgh hteS|gg tetsht e
 FATTO--echo con stringhe con più spazi consecutivi, gli spazi vengono eliminati dallo split
 FATTO--se come comando viene passata una directory -> es. $HOME -> bash: /Users/ebondi: is a directory
 
@@ -49,5 +44,8 @@ cat | <<fine ->esplode  -> sistemato ma lagga abbestia, tolto gnl
 FATTO--echo "$HOME" '$HOME' "'$HOME'" '"$HOME"' ->non gestisce bene le virgolette
 FATTO--sistemare echo -n
 FATTO--sistemare syntax error vari, se ci sono (singola pipe)
-crtl C non funziona bene quando c'é un processo figlio aperto es.-> cat
+
+FATTO--crtl C non funziona bene quando c'é un processo figlio aperto es.-> cat
 export non aggiorna bene le env var - comando che ha provato giacomo (export a=4 b v d e=ls a=5)
+unset non fa il "not a valid identifier" -> es. unset a= (se gli vengono passati piu parametri da errore ma esegue comunque gli altri)
+controllare che a volte compaiono root leaks

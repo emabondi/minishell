@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:05:21 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/21 15:03:29 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:20:38 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	ft_isalnum_mod(char **cmd)
 	i = 0;
 	while (cmd[1][i])
 	{
-		// printf("%c\n", cmd[1][i]);
 		if (cmd[1][i] == '=' || cmd[1][i] == '+')
 			break ;
 		if ((cmd[1][i] >= 'a' && cmd[1][i] <= 'z')
@@ -47,7 +46,21 @@ int	ft_isalnum_mod(char **cmd)
 		|| (cmd[1][i] >= '0' && cmd[1][i] <= '9') || cmd[1][i] == '_')
 			i++;
 		else
-			return(1);
+			return (1);
 	}
 	return (0);
+}
+
+void	sig_handler_father(int signal)
+{
+	if (signal == SIGINT)
+	{
+		write(1, "^C\n", 3);
+		exit_status = 130;
+	}
+	else if (signal == SIGQUIT)
+	{
+		write(1, "^\\Quit: 3\n", 10);
+		exit_status = 131;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/03 16:56:15 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:20:44 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <dirent.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <signal.h>
 
 typedef struct s_minishell
 {
@@ -36,6 +37,7 @@ int	exit_status;
 
 void	init(t_mini *mini, char **envp);
 void	sig_handler(int signal);
+void	sig_handler_father(int signal);
 
 char	**ft_env_copy(char **env);
 char	*ft_get_env_var(t_mini *mini, char *str);

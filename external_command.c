@@ -6,7 +6,7 @@
 /*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/12/05 17:17:49 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:20:30 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd)
 
 	ret = 1;
 	pid = fork();
-	// cmd[1] = NULL;
 	if (pid == 0)
 	{
 		if (ft_strchr(path, '/') != NULL)
@@ -58,9 +57,13 @@ int	ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd)
 	}	
 	else
 	{
+		signal(SIGINT, sig_handler_father);
+		signal(SIGQUIT, sig_handler_father);
 		waitpid(pid, &ret, 0);
 		if (WIFEXITED(ret))
 			exit_status = WEXITSTATUS(ret);
+		signal(SIGINT, sig_handler);
+		signal(SIGQUIT, sig_handler);
 	}
 	return (ret);
 }
@@ -113,13 +116,6 @@ void	ft_ext_cmd(t_mini *mini, char **cmd)
 		ft_forkamelo_tutto(mini, cmd[0], cmd);
 		return ;
 	}
-	//if (path == NULL)
-	//{
-	//	ft_putstr_fd("minisburo: ", 2);
-	//	ft_putstr_fd(cmd[0], 2);
-	//	ft_putendl_fd(": command not found", 2);
-	//	return ;
-	//}
 	pos_path = ft_split(path, ':');
 	i = 0;
 	if (ft_check_access(pos_path, cmd, &i))
