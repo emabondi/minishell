@@ -1,3 +1,7 @@
+due funzioni troppo lunghe e troppe funzioni in file NORMINETTE
+manca solo unset schifo
+
+
 per redirection modificare cmd in modo che abbia solo un comando da eseguire
 resettare fd dopo execve
 se apertura file da errore non eseguire nulla (fd=-1)
@@ -46,7 +50,7 @@ FATTO--sistemare echo -n
 FATTO--sistemare syntax error vari, se ci sono (singola pipe)
 
 FATTO--crtl C non funziona bene quando c'é un processo figlio aperto es.-> cat
-env mostra le variabili aggiunte con export solo se hanno un valore (risulta con valore anche es. export a=)
-export non aggiorna bene le env var - comando che ha provato giacomo (export a=4 b v d e=ls a=5)
+FATTO--env mostra le variabili aggiunte con export solo se hanno un valore (risulta con valore anche es. export a=)
+FATTO--export non aggiorna bene le env var - comando che ha provato giacomo (export a=4 b v d e=ls a=5)
 unset non fa il "not a valid identifier" -> es. unset a= (se gli vengono passati piu parametri da errore ma esegue comunque gli altri)
 controllare che a volte compaiono root leaks

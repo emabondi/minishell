@@ -3,45 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:24:09 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/30 17:16:52 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:55:02 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-/*
-int redirection(char *file, int type)
-{
-    int fd;
-
-    if (type == 1)
-        fd = open(file, O_WRITE, 0_APPEND);
-    else
-        fd = open(file, O_WRITE, 0_truncate);
-    if (fd == -1)
-    {
-        error;
-        return -1;
-    }
-    dup2(fd, 1)l;
-    return (0);
-}
-int redirection(char *file, int type)
-{
-    int fd;
-
-    if (type == 1)
-        fd = open(file, 0_READ);
-    if (fd == -1)
-    {
-        error;
-        return -1;
-    }
-    dup2(f)l;
-    return (0);
-}*/
 
 static void	ft_heredocchiamo(char *sub, int *fd)
 {
@@ -49,10 +18,7 @@ static void	ft_heredocchiamo(char *sub, int *fd)
 
 	while (1)
 	{
-		//write(1, ">", 1);
-		//line = get_next_line(0);
 		line = readline("> ");
-		//ft_putnbr_fd(ft_strlen(line), 1);
 		if (ft_strncmp(sub, line, ft_strlen(sub)) == 0 \
 			&& ft_strlen(sub) == ft_strlen(line))
 		{
@@ -61,7 +27,6 @@ static void	ft_heredocchiamo(char *sub, int *fd)
 		}
 		ft_putstr_fd(line, fd[1]);
 		free(line);
-
 	}
 }
 
@@ -217,17 +182,10 @@ char *ft_redirection(char *cmd)
 			i++;
 		}
 		if (new_cmd[i] == '<' || new_cmd[i] == '>')
-		{
 			new_cmd = ft_redirection2(new_cmd, i);
-			//ft_putstr_fd("\nnew_cmd:", 1);
-			//ft_putstr_fd(new_cmd, 1);
-		}
 		else
 			i++;
 	}
 	free (cmd);
-//	ft_putstr_fd("\ncomando tagliato:", 1);
-//	ft_putstr_fd(new_cmd, 1);
-//	ft_putstr_fd("\n", 1);
 	return (new_cmd);
 }

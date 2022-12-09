@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:29:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/05 15:36:49 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:53:04 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	execute_commands(t_mini *mini, char *cmd_i)
 	else if (cmd[0][0] != '\0' && ft_strncmp(cmd[0], "exit", 4) == 0 && \
 		ft_strlen (cmd[0]) == 4)
 		builtin_exit(mini, cmd);
-	else if (ft_strncmp(cmd[0], "env\n", 4) == 0 && \
+	else if (ft_strncmp(cmd[0], "env", 3) == 0 && \
 		ft_strlen(cmd[0]) == 3)
 		builtin_env(mini);
 	else if (ft_strncmp(cmd[0], "export", 6) == 0 && \

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/09 14:51:46 by ccolaiac          #+#    #+#             */
+/*   Updated: 2022/12/09 14:51:58 by ccolaiac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -36,8 +47,7 @@ void	ft_export_replace(char **env, char *key, char *value)
 		return ;
 	while (env[i])
 	{
-		if (!ft_strncmp(env[i], key, ft_strlen(key)) && \
-			(*(env[i] + ft_strlen(key)) == '='))
+		if (!ft_strncmp(env[i], key, ft_strlen(key)))
 		{
 			free(env[i]);
 			a = ft_strjoin(key, "=");
@@ -62,8 +72,7 @@ void	ft_export_add(char **env, char *key, char *value)
 		return ;
 	while (env[i])
 	{
-		if (!ft_strncmp(env[i], key, ft_strlen(key)) && \
-			(*(env[i] + ft_strlen(key)) == '='))
+		if (!ft_strncmp(env[i], key, ft_strlen(key)))
 		{
 			a = ft_strjoin(env[i], value);
 			free(env[i]);

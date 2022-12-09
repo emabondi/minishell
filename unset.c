@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 18:34:17 by atarsi            #+#    #+#             */
-/*   Updated: 2022/11/02 18:34:19 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:55:16 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_get_env_value(char **env, char *str)
 	return (NULL);
 }
 
-char **builtin_unset2(t_mini *mini, char **env, char *str)
+char	**builtin_unset2(t_mini *mini, char **env, char *str)
 {
 	char	**new;
 	int		i;

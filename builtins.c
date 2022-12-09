@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:24:38 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/02 16:33:56 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:52:40 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	builtin_export(t_mini *mini, char **cmd)
 		ft_only_export(mini);
 		return ;
 	}
-	while(cmd[i])
+	while (cmd[i])
 	{
 		if ((cmd[i][0] != '_' && !ft_isalpha(cmd[i][0])) || ft_isalnum_mod(cmd))
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:34:26 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/03 17:25:24 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:52:53 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	builtin_cd(t_mini *mini, char **cmd)
 
 int	all_str_n(char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (str[++i])
@@ -101,6 +101,7 @@ int	all_str_n(char *str)
 			return (0);
 	return (1);
 }
+
 void	builtin_echo(char **cmd)
 {
 	int	i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/12 17:35:04 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:54:01 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	sig_handler(int signal)
 	else if (signal == SIGQUIT)
 	{
 		exit_status = 127;
-		//exit(1);
 	}
 	return ;
 }
@@ -77,13 +76,11 @@ int	main(int argc, char *argv[], char **env)
 	(void)argc;
 	(void)argv;
 	init(&mini, env);
-	// write(1, "a", 1);
 	while (mini.exit == 0)
 	{
 		get_command(&mini);
 	}
 	ft_free_matrix(mini.env);
 	init_signals(1);
-	//ft_putstr_fd("exit\n", 1);
 	return (exit_status);
 }
