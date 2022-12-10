@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/10 18:36:49 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 21:22:17 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*expand_env_var(t_mini *mini, char *str);
 char	*expand_env_var2(t_mini *mini, char *str, int i);
 char	*expand_env_var3(char *initial_str, char *var);
 char	*ft_whats_exit_status(char *str, int i);
-void	expand_env_var_helper(t_mini *mini, char *str, int i);
+void	expand_env_var_helper(char *str, int *i);
 
 int		ft_isspace(int c);
 int		ft_parse_error(int token);

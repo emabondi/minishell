@@ -3,14 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+         #
+#    By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/10 18:07:38 by ebondi            #+#    #+#              #
-#    Updated: 2022/12/10 18:00:56 by ccolaiac         ###   ########.fr        #
+#    Updated: 2022/12/10 21:25:36 by ebondi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#READLINE_FLAGS = -L/usr/include -lreadline -L$$HOME/.brew/opt/readline/lib -I $$HOME/.brew/opt/readline/include/readline
 READLINE_FLAGS = -L/usr/include -lreadline -lcurses -L /Users/$(USER)/.brew/opt/readline/lib -I /Users/$(USER)/.brew/opt/readline/include
 NAME = minishell
 FLAGS = -Wall -Werror -Wextra
@@ -42,11 +41,4 @@ relibft:
 vai: re
 	@./$(NAME)
 
-leaks:
-	@leaks --atExit -- ./$(NAME)
-
-test: test.c re
-	@gcc test.c libft/libft.a -o tests
-	@./tests | ./minishell
-
-.PHONY:	all clean fclean re bonus vai leaks test relibft
+.PHONY:	all clean fclean re bonus vai relibft

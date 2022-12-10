@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 18:00:12 by ccolaiac          #+#    #+#             */
-/*   Updated: 2022/12/10 18:18:13 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 21:10:15 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,28 +68,19 @@ char	*ft_redirection2(char *cmd, int start)
 	return (new_cmd);
 }
 
-void	ft_redirection_help(char *new_cmd, int i)
+void	ft_redirection_help(char *new_cmd, int *i)
 {
-	while (new_cmd[i])
+	if (new_cmd[*i] == '\"')
 	{
-		if (new_cmd[i] == '\"')
-		{
-			i++;
-			while (new_cmd[i] != '\"')
-				i++;
-			i++;
-		}
-		if (new_cmd[i] == '\'')
-		{
-			i++;
-			while (new_cmd[i] != '\'')
-				i++;
-			i++;
-		}
-		if (new_cmd[i] == '<' || new_cmd[i] == '>')
-			new_cmd = ft_redirection2(new_cmd, i);
-		else
-			i++;
+		(*i)++;
+		while (new_cmd[*i] != '\"')
+			(*i)++;
+	}
+	if (new_cmd[*i] == '\'')
+	{
+		(*i)++;
+		while (new_cmd[*i] != '\'')
+			(*i)++;
 	}
 }
 
@@ -100,7 +91,14 @@ char	*ft_redirection(char *cmd)
 
 	i = 0;
 	new_cmd = ft_strdup(cmd);
-	ft_redirection_help(new_cmd, i);
+	while (new_cmd[i])
+	{
+		ft_redirection_help(new_cmd, &i);
+		if (new_cmd[i] == '<' || new_cmd[i] == '>')
+			new_cmd = ft_redirection2(new_cmd, i);
+		else
+			i++;
+	}
 	free (cmd);
 	return (new_cmd);
 }

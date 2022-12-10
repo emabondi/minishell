@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/10 18:36:25 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 21:21:25 by ebondi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,18 @@ char	*expand_env_var(t_mini *mini, char *str)
 		else if (str[i] == '$' && ft_isalnum(str[i + 1]))
 			str = expand_env_var2(mini, str, i);
 		else if (str[i] == 34)
-			expand_env_var_helper(mini, str, i);
-		else if (str[i] == 39)
 		{
+			while (str[++i] && str[i] != 34)
+			{
+				if (str[i] == '$' && str[i + 1] == '?')
+					str = ft_whats_exit_status(str, i);
+				else if (str[i] == '$' && ft_isalnum(str[i + 1]))
+					str = expand_env_var2(mini, str, i);
+			}
 			i++;
-			while (str[i] && str[i] != 39)
-				i++;
 		}
-		i++;
+		else
+			expand_env_var_helper(str, &i);
 	}
 	return (str);
 }
