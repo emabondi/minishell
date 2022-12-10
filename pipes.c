@@ -3,19 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 12:15:21 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/05 11:14:32 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/10 18:31:36 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_last_pipe(t_mini *mini, char *cmd_i, int *pid, int *tmp)
+void	ft_last_pipe_help(t_mini *mini, char *cmd_i, int *tmp)
 {
 	char	*cmd;
 	char	**cmds;
+
+	if ((mini->cmds[1] == NULL && cmd_i[0] != '\0') \
+		&& (ft_strncmp(cmd_i, "exit", 4) == 0 && \
+		ft_strlen (cmd_i) == 4))
+	{
+		cmd = ft_redirection(cmd_i);
+		cmds = ft_smart_split(cmd, ' ');
+		cmds = ft_quotes(cmds);
+		builtin_exit(mini, cmds);
+		ft_free_matrix(cmds);
+	}
+	close (*tmp);
+	while (waitpid(-1, NULL, WUNTRACED) != -1)
+		;
+	*tmp = dup(0);
+}
+
+void	ft_last_pipe(t_mini *mini, char *cmd_i, int *pid, int *tmp)
+{
+	char	*cmd;
 
 	*pid = fork();
 	if (*pid == 0)
@@ -26,22 +46,7 @@ void	ft_last_pipe(t_mini *mini, char *cmd_i, int *pid, int *tmp)
 		exit (0);
 	}
 	else
-	{
-		if ((mini->cmds[1] == NULL && cmd_i[0] != '\0')\
-			&& (ft_strncmp(cmd_i, "exit", 4) == 0 && \
-			ft_strlen (cmd_i) == 4))
-		{
-			cmd = ft_redirection(cmd_i);
-			cmds = ft_smart_split(cmd, ' ');
-			cmds = ft_quotes(cmds);
-			builtin_exit(mini, cmds);
-			ft_free_matrix(cmds);
-		}
-		close (*tmp);
-		while (waitpid(-1, NULL, WUNTRACED) != -1)
-			;
-		*tmp = dup(0);
-	}
+		ft_last_pipe_help(mini, cmd_i, tmp);
 }
 
 void	ft_every_pipe(t_mini *mini, char *cmd_i, int *pid, int *tmp)

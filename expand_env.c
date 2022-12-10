@@ -6,7 +6,7 @@
 /*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 20:22:54 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/09 14:52:13 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:36:25 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_get_env_var(t_mini *mini, char *str)
 	str++;
 	while (mini->env[i])
 	{
-		if (confront_env_var(mini->env[i], str) &&\
+		if (confront_env_var(mini->env[i], str) && \
 			ft_strlen(mini->env[i]) > ft_strlen(str) + 1)
 			return (ft_strchr(mini->env[i], '=') + 1);
 		i++;
@@ -110,17 +110,7 @@ char	*expand_env_var(t_mini *mini, char *str)
 		else if (str[i] == '$' && ft_isalnum(str[i + 1]))
 			str = expand_env_var2(mini, str, i);
 		else if (str[i] == 34)
-		{
-			i++;
-			while (str[i] && str[i] != 34)
-			{
-				if (str[i] == '$' && str[i + 1] == '?')
-					str = ft_whats_exit_status(str, i);
-				else if (str[i] == '$' && ft_isalnum(str[i + 1]))
-					str = expand_env_var2(mini, str, i);
-				i++;
-			}
-		}
+			expand_env_var_helper(mini, str, i);
 		else if (str[i] == 39)
 		{
 			i++;

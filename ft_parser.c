@@ -6,7 +6,7 @@
 /*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 15:30:10 by atarsi            #+#    #+#             */
-/*   Updated: 2022/12/09 14:53:37 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:03:55 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_check_pipe(char *str)
 	if (str[i] == '|' || !ft_check_pipe2(str))
 	{
 		ft_putstr_fd("minisburo: syntax error near unexpected token `|'\n", 2);
-		exit_status = 258;
+		g_exit_status = 258;
 		return (0);
 	}
 	return (1);
@@ -71,7 +71,7 @@ int	ft_check_quotes(char *str)
 			ft_parse_error('\"');
 		else
 			ft_parse_error('\'');
-		exit_status = 258;
+		g_exit_status = 258;
 		return (0);
 	}
 	return (1);

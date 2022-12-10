@@ -17,7 +17,7 @@ int	ft_parse_error(int token)
 	ft_putstr_fd("minisburo: syntax error near unexpected token `", 2);
 	write (2, &token, 1);
 	ft_putstr_fd("'\n", 2);
-	exit_status = 258;
+	g_exit_status = 258;
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:21:58 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/08 17:22:01 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/10 17:40:26 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	**ft_env_copy(char **env)
 {
 	int		i;
-	char **copy;
+	char	**copy;
 
 	i = 0;
 	copy = (char **)malloc(sizeof(char *) * ft_len_matrix(env) + 1);

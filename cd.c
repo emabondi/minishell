@@ -6,7 +6,7 @@
 /*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:34:26 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/09 14:52:53 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:03:27 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	builtin_cd(t_mini *mini, char **cmd)
 	{
 		chdir(ft_get_env_value(mini->env, "HOME"));
 		ft_update_env(mini);
-		exit_status = 0;
+		g_exit_status = 0;
 	}
 	else
 	{
@@ -81,7 +81,7 @@ void	builtin_cd(t_mini *mini, char **cmd)
 			chdir(ft_get_env_value(mini->env, "HOME"));
 		else if (chdir(dir))
 		{
-			exit_status = 1;
+			g_exit_status = 1;
 			ft_putstr_fd("cd: no such file or directory: ", 2);
 			ft_putendl_fd(cmd[1], 2);
 		}
@@ -123,5 +123,5 @@ void	builtin_echo(char **cmd)
 	}
 	if (flag)
 		write (1, "\n", 1);
-	exit_status = 0;
+	g_exit_status = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:05:28 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/09 14:54:01 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:04:10 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	sig_handler(int signal)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-		exit_status = 1;
+		g_exit_status = 1;
 	}
 	else if (signal == SIGQUIT)
 	{
-		exit_status = 127;
+		g_exit_status = 127;
 	}
 	return ;
 }
@@ -71,7 +71,7 @@ void	ft_free_matrix(char **env)
 
 int	main(int argc, char *argv[], char **env)
 {
-	t_mini		mini;
+	t_mini	mini;
 
 	(void)argc;
 	(void)argv;
@@ -82,5 +82,5 @@ int	main(int argc, char *argv[], char **env)
 	}
 	ft_free_matrix(mini.env);
 	init_signals(1);
-	return (exit_status);
+	return (g_exit_status);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 20:05:21 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/08 16:20:38 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/10 18:04:19 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_len_matrix(char **matrix)
 
 int	ft_isalnum_mod(char **cmd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (cmd[1][i])
@@ -56,11 +56,11 @@ void	sig_handler_father(int signal)
 	if (signal == SIGINT)
 	{
 		write(1, "^C\n", 3);
-		exit_status = 130;
+		g_exit_status = 130;
 	}
 	else if (signal == SIGQUIT)
 	{
 		write(1, "^\\Quit: 3\n", 10);
-		exit_status = 131;
+		g_exit_status = 131;
 	}
 }

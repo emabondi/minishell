@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:20:23 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/08 16:20:44 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/10 18:36:49 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_minishell
 	char	**cmds;
 }		t_mini;
 
-int	exit_status;
+int	g_exit_status;
 
 void	init(t_mini *mini, char **envp);
 void	sig_handler(int signal);
@@ -47,6 +47,7 @@ char	*expand_env_var(t_mini *mini, char *str);
 char	*expand_env_var2(t_mini *mini, char *str, int i);
 char	*expand_env_var3(char *initial_str, char *var);
 char	*ft_whats_exit_status(char *str, int i);
+void	expand_env_var_helper(t_mini *mini, char *str, int i);
 
 int		ft_isspace(int c);
 int		ft_parse_error(int token);
@@ -96,6 +97,7 @@ int		ft_execve_error(char *path);
 int		ft_pipe(t_mini *mini);
 void	ft_every_pipe(t_mini *mini, char *cmd_i, int *pid, int *tmp);
 void	ft_last_pipe(t_mini *mini, char *cmd_i, int *pid, int *tmp);
+void	ft_last_pipe_help(t_mini *mini, char *cmd_i, int *tmp);
 
 //quotes
 char	**ft_quotes(char **cmd);
@@ -105,5 +107,12 @@ char	*ft_delete_quotes(char	*cmd, char quote);
 //redirection
 char	*ft_redirection(char *cmd);
 char	*ft_redirection2(char *cmd, int start);
+char	*ft_rd_arg(char *cmd, int *j, int *z);
+char	*ft_redirection2(char *cmd, int start);
+char	*ft_redirection(char *cmd);
+char	*ft_cut_sub(char *src, int start, int start2);
+int		ft_input_rd(char *str);
+void	ft_heredoc(char *sub);
+int		ft_output_rd(char *str, int type);
 
 #endif

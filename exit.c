@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atarsi <atarsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 19:33:50 by ebondi            #+#    #+#             */
-/*   Updated: 2022/11/18 19:22:16 by atarsi           ###   ########.fr       */
+/*   Updated: 2022/12/10 18:03:39 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	builtin_exit2(t_mini *mini, char **cmd)
 	{
 		ft_putendl_fd("exit", 1);
 		ft_putstr_fd("minisburo: exit: ", 2);
-		ft_putstr_fd(cmd[1] , 2);
+		ft_putstr_fd(cmd[1], 2);
 		ft_putstr_fd(": numeric argument required\n", 2);
-		exit_status = 255;
+		g_exit_status = 255;
 		mini->exit = 1;
 		return ;
 	}
@@ -42,7 +42,7 @@ void	builtin_exit2(t_mini *mini, char **cmd)
 	{
 		ft_putendl_fd("exit", 1);
 		ft_putstr_fd("minisburo: exit: too many arguments\n", 2);
-		exit_status = 1;
+		g_exit_status = 1;
 		return ;
 	}
 }
@@ -61,9 +61,9 @@ void	builtin_exit(t_mini *mini, char **cmd)
 	{
 		x = ft_atoi(cmd[1]);
 		if (x > 255)
-			exit_status = (x % 256);
+			g_exit_status = (x % 256);
 		else
-			exit_status = x;
+			g_exit_status = x;
 		ft_putendl_fd("exit", 1);
 		mini->exit = 1;
 		return ;

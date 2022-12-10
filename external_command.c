@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_command.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebondi <ebondi@student.42roma.it>          +#+  +:+       +#+        */
+/*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:36:59 by atarsi            #+#    #+#             */
-/*   Updated: 2022/12/08 16:20:30 by ebondi           ###   ########.fr       */
+/*   Updated: 2022/12/10 18:03:48 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_forkamelo_tutto(t_mini *mini, char *path, char **cmd)
 		signal(SIGQUIT, sig_handler_father);
 		waitpid(pid, &ret, 0);
 		if (WIFEXITED(ret))
-			exit_status = WEXITSTATUS(ret);
+			g_exit_status = WEXITSTATUS(ret);
 		signal(SIGINT, sig_handler);
 		signal(SIGQUIT, sig_handler);
 	}

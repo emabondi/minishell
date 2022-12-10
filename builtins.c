@@ -6,7 +6,7 @@
 /*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:24:38 by ebondi            #+#    #+#             */
-/*   Updated: 2022/12/09 14:52:40 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:03:09 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	builtin_pwd(t_mini *mini)
 	if (pwd)
 	{
 		ft_putendl_fd(pwd, 1);
-		exit_status = 0;
+		g_exit_status = 0;
 		free(pwd);
 		return ;
 	}
-	exit_status = 1;
+	g_exit_status = 1;
 	free(pwd);
 	(void)mini;
 }
@@ -81,11 +81,11 @@ void	builtin_export(t_mini *mini, char **cmd)
 			ft_putstr_fd("minisburo: export: '", 2);
 			ft_putstr_fd(cmd[1], 2);
 			ft_putendl_fd("': not a valid identifier", 2);
-			exit_status = 1;
+			g_exit_status = 1;
 			return ;
 		}
 		builtin_export2(mini, cmd[i]);
 		i++;
 	}
-	exit_status = 0;
+	g_exit_status = 0;
 }

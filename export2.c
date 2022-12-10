@@ -6,7 +6,7 @@
 /*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:51:46 by ccolaiac          #+#    #+#             */
-/*   Updated: 2022/12/09 14:51:58 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:42:26 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ft_export_insert(t_mini *mini, char **env, char *key, char *value)
 	else
 		new[i] = ft_strdup(key);
 	free(insert);
-	new[i+1] = NULL;
+	new[i + 1] = NULL;
 	ft_free_matrix(mini->env);
 	mini->env = new;
 }
