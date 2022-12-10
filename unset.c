@@ -6,7 +6,7 @@
 /*   By: ccolaiac <ccolaiac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 18:34:17 by atarsi            #+#    #+#             */
-/*   Updated: 2022/12/10 17:32:16 by ccolaiac         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:39:18 by ccolaiac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ char	**builtin_unset2(t_mini *mini, char **env, char *str)
 	(void)mini;
 }
 
+int	unset_valid(char *cmd)
+{
+	int	i;
+
+	i = 0;
+	while (cmd[i] != '\0')
+	{
+		if (!ft_isascii(cmd[i]) || cmd[i] == '=')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	builtin_unset(t_mini *mini, char **cmd)
 {
 	int		i;
@@ -57,7 +71,13 @@ void	builtin_unset(t_mini *mini, char **cmd)
 	i = 1;
 	while (cmd[i])
 	{
-		if (ft_get_env_value(mini->env, cmd[i]) != NULL)
+		if (!unset_valid(cmd[i]))
+		{
+			ft_putstr_fd("minisburo: unset: `", 2);
+			ft_putstr_fd(cmd[i], 2);
+			ft_putstr_fd("\': not a valid identifier\n", 2);
+		}
+		else if (ft_get_env_value(mini->env, cmd[i]) != NULL)
 			mini->env = builtin_unset2(mini, mini->env, cmd[i]);
 		i++;
 	}
